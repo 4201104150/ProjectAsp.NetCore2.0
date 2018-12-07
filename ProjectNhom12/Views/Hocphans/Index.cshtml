@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ProjectNhom12.Models.Hocphan>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Hocky)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Giangvien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaMhNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hocky)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Giangvien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaMhNavigation.MaMh)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MaHp">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MaHp">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MaHp">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
