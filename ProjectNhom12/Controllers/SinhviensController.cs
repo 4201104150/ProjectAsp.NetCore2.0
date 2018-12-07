@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -154,6 +156,39 @@ namespace ProjectNhom12.Controllers
         private bool SinhvienExists(string id)
         {
             return _context.Sinhvien.Any(e => e.MaSv == id);
+        }
+
+        public IActionResult trangCaNhaSV()
+        {
+            return View("trangCaNhaSV");
+        }
+        public IActionResult UploadFile(IFormFile myfile)
+        {
+            if (myfile != null)
+            {
+                string url = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "data", myfile.FileName);
+                using (var f = new FileStream(url, FileMode.Create))
+                {
+                    myfile.CopyTo(f);
+                }
+            }
+            return RedirectToAction("Upload");
+        }
+
+        public IActionResult UploadFiles(IFormFile[] myfile)
+        {
+            if (myfile != null)
+            {
+                foreach (var item in myfile)
+                {
+                    string url = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "data", item.FileName);
+                    using (var f = new FileStream(url, FileMode.Create))
+                    {
+                        item.CopyTo(f);
+                    }
+                }
+            }
+            return RedirectToAction("Upload");
         }
     }
 }

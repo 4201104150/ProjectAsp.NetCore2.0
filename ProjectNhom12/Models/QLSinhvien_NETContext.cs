@@ -28,11 +28,7 @@ namespace ProjectNhom12.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-<<<<<<< HEAD
                 optionsBuilder.UseSqlServer("Server=DESKTOP-6P4KML7\\SQLEXPRESS2;Database=QLSinhvien_NET;Integrated Security=True;");
-=======
-                optionsBuilder.UseSqlServer("Server=DESKTOP-SSJ4G38SQLEXPRESS;Database=QLSinhvien_NET;Integrated Security=True;");
->>>>>>> 12d2f9f81db539f642924c3abc29850d8065118c
             }
         }
 
