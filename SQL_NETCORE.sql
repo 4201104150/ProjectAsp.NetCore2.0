@@ -4,6 +4,7 @@ go
 use QLSinhvien_NETCORE
 go
 
+
 create table Khoa
 (
 	MaKhoa varchar(10) constraint pk_khoa primary key,
@@ -13,57 +14,81 @@ create table Khoa
 )
 go
 
-create table Sinhvien
+create table SinhVien
 (
-	MaSv varchar(10),
-	TenSv nvarchar(100) not null,
+	MaSV varchar(10),
+	TenSV nvarchar(100) not null,
 	Nam int check (nam>=1 and nam<=8),
 	MaKhoa varchar(10),
 	HinhSV varchar(max) null,
-	constraint pk_sinhvien primary key (MaSv),
+	GioiTinh nvarchar(4) CHECK (GioiTinh IN (N'Nam', N'Nữ')),
+	CMND varchar(20),
+	Diachi nvarchar(255),
+	constraint pk_sinhvien primary key (MaSV),
 	constraint fk_sinhvien_k foreign key (MaKhoa) references Khoa(MaKhoa)
 )
 go
 
-create table Monhoc
+create table MonHoc
 (
-	MaMh varchar(10) constraint pk_Monhoc primary key, 
-	TenMh nvarchar(100) not null,
-	Tinchi int null,
+	MaMH varchar(10) constraint pk_Monhoc primary key, 
+	TenMH nvarchar(100) not null,
+	TinChi int null,
 	MaKhoa varchar(10),
-	constraint fk_Monhoc foreign key (MaKhoa) references Khoa(Makhoa), 
+	constraint fk_Monhoc foreign key (MaKhoa) references Khoa(MaKhoa), 
 )
 go
 create table Hocphan
 (
-	MaHp varchar(10) constraint pk_Hocphan primary key,
-	MaMh varchar(10),
-	Hocky int check(Hocky<=3 and Hocky>=0),
+	MaHP varchar(10) constraint pk_Hocphan primary key,
+	MaMH varchar(10),
+	HocKy int check(Hocky<=3 and Hocky>=0),
 	Nam int, 
-	Giangvien nvarchar(100),
-	constraint fk_Hocphan_k foreign key(MaMh) references Monhoc (MaMh)
+	GiangVien nvarchar(100),
+	constraint fk_Hocphan_k foreign key(MaMH) references Monhoc (MaMH)
 )
 go
 create table Ketqua
 (
-	MaSv varchar(10),
-	MaHp varchar(10),
+	MaSV varchar(10),
+	MaHP varchar(10),
 	Diem int check (Diem >=0 and Diem <=10),
-	constraint pk_Ketqua primary key(MaSv,MaHp),
-	constraint fk_Ketqua_SV foreign key (MaSv) references Sinhvien(MaSv),
-	constraint fk_Ketqua_HP foreign key (MaHp) references HocPhan (MaHp),
+	constraint pk_Ketqua primary key(MaSV,MaHP),
+	constraint fk_Ketqua_SV foreign key (MaSV) references SinhVien(MaSV),
+	constraint fk_Ketqua_HP foreign key (MaHP) references HocPhan (MaHP),
 )
 go
 
 create table Dieukien
 (
-	MaMh varchar(10),
-	MaMh_truoc varchar(10),
-	constraint pk_Dieukien primary key (MaMh,MaMh_truoc),
-	constraint pk_Dieukien_Mh  foreign key (MaMh) references  Monhoc(MaMh),
-	constraint pk_Dieukien_Mh_truoc  foreign key (MaMh_truoc) references  Monhoc(MaMh),
+	MaMH varchar(10),
+	MaMH_truoc varchar(10),
+	constraint pk_Dieukien primary key (MaMH,MaMH_truoc),
+	constraint pk_Dieukien_Mh  foreign key (MaMH) references  MonHoc(MaMH),
+	constraint pk_Dieukien_Mh_truoc  foreign key (MaMH_truoc) references  MonHoc(MaMH),
 )
 go
+create table DangNhap
+(
+	username varchar(10) primary key,
+	passwords nvarchar(20) not null,
+	loai int not null,
+	constraint fk_dangnhap_sinhvien foreign key (username) references SinhVien(MaSV)
+)
+go
+create table NhanVien
+(
+	MaNV varchar(10),
+	TenNV nvarchar(100) not null,
+	Ngayvaolam datetime,
+	MaKhoa varchar(10),
+	HinhNV varchar(max) null,
+	GioiTinh nvarchar(4) CHECK (GioiTinh IN (N'Nam', N'Nữ')),
+	CMND varchar(20) unique,
+	Diachi nvarchar(255),
+	constraint pk_nhanvien primary key (MaNV),
+	constraint fk_nhanvien_k foreign key (MaKhoa) references Khoa(MaKhoa)
+)
 
 /*insert into Khoa values
  ('VLy',N'VậtLý',1982),
