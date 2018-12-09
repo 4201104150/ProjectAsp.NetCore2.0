@@ -81,4 +81,10 @@ create table NhanVien
 	constraint pk_nhanvien primary key (MaNv),
 	constraint fk_nhanvien_k foreign key (MaKhoa) references Khoa(MaKhoa)
 )
-
+go
+create table DangNhap
+(
+	username nvarchar(100) primary key,
+	passwword nvarchar(255) not null,
+	loai int not null,
+)
