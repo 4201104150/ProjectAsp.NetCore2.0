@@ -4,7 +4,11 @@ go
 use QLSinhvien_NET
 go
 
-
+create table Roles
+(
+	id int not null primary key,
+	ten nvarchar(100),
+)
 create table Khoa
 (
 	MaKhoa varchar(10) constraint pk_khoa primary key,
@@ -18,6 +22,8 @@ create table Sinhvien
 (
 	MaSv varchar(10),
 	TenSv nvarchar(100) not null,
+	Matkhau nvarchar(100) not null,
+	Loai int not null,
 	Nam int check (nam>=1 and nam<=8),
 	MaKhoa varchar(10),
 	HinhSV varchar(max) null,
@@ -25,7 +31,8 @@ create table Sinhvien
 	CMND nvarchar(20),
 	Diachi nvarchar(255),
 	constraint pk_sinhvien primary key (MaSv),
-	constraint fk_sinhvien_k foreign key (MaKhoa) references Khoa(MaKhoa)
+	constraint fk_sinhvien_k foreign key (MaKhoa) references Khoa(MaKhoa),
+	constraint fk_sinhvien_roles foreign key (Loai) references Roles(id)
 )
 go
 
@@ -72,6 +79,8 @@ create table NhanVien
 (
 	MaNv varchar(10),
 	TenNv nvarchar(100) not null,
+	Matkhaunv nvarchar(100) not null,
+	Loai int not null,
 	Ngayvaolam datetime,
 	MaKhoa varchar(10),
 	HinhNV varchar(max) null,
@@ -79,12 +88,6 @@ create table NhanVien
 	CMND nvarchar(20),
 	Diachi nvarchar(255),
 	constraint pk_nhanvien primary key (MaNv),
-	constraint fk_nhanvien_k foreign key (MaKhoa) references Khoa(MaKhoa)
-)
-go
-create table DangNhap
-(
-	username nvarchar(100) primary key,
-	passwword nvarchar(255) not null,
-	loai int not null,
+	constraint fk_nhanvien_k foreign key (MaKhoa) references Khoa(MaKhoa),
+	constraint fk_nhanvien_roles foreign key (Loai) references Roles(id)
 )
