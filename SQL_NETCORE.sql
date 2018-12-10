@@ -4,10 +4,11 @@ go
 use QLSinhvien_NET
 go
 
-create table Roles
+create table Dangnhap
 (
-	id int not null primary key,
-	ten nvarchar(100),
+	username varchar(10) primary key,
+	matkhau varchar(20) not null,
+	loai int not null,
 )
 create table Khoa
 (
@@ -22,8 +23,6 @@ create table Sinhvien
 (
 	MaSv varchar(10),
 	TenSv nvarchar(100) not null,
-	Matkhau nvarchar(100) not null,
-	Loai int not null,
 	Nam int check (nam>=1 and nam<=8),
 	MaKhoa varchar(10),
 	HinhSV varchar(max) null,
@@ -32,7 +31,8 @@ create table Sinhvien
 	Diachi nvarchar(255),
 	constraint pk_sinhvien primary key (MaSv),
 	constraint fk_sinhvien_k foreign key (MaKhoa) references Khoa(MaKhoa),
-	constraint fk_sinhvien_roles foreign key (Loai) references Roles(id)
+	constraint fk_sinhvien_dangnhap foreign key  (MaSv)  references Dangnhap(username)
+
 )
 go
 
@@ -79,8 +79,6 @@ create table NhanVien
 (
 	MaNv varchar(10),
 	TenNv nvarchar(100) not null,
-	Matkhaunv nvarchar(100) not null,
-	Loai int not null,
 	Ngayvaolam datetime,
 	MaKhoa varchar(10),
 	HinhNV varchar(max) null,
@@ -89,5 +87,6 @@ create table NhanVien
 	Diachi nvarchar(255),
 	constraint pk_nhanvien primary key (MaNv),
 	constraint fk_nhanvien_k foreign key (MaKhoa) references Khoa(MaKhoa),
-	constraint fk_nhanvien_roles foreign key (Loai) references Roles(id)
+	constraint fk_nhanvien_dangnhap foreign key (MaNv) references Dangnhap(username)
 )
+go
