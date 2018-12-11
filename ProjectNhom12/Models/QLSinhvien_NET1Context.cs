@@ -4,17 +4,18 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace ProjectNhom12.Models
 {
-    public partial class QLSinhvien_NETContext : DbContext
+    public partial class QLSinhvien_NET1Context : DbContext
     {
-        public QLSinhvien_NETContext()
+        public QLSinhvien_NET1Context()
         {
         }
 
-        public QLSinhvien_NETContext(DbContextOptions<QLSinhvien_NETContext> options)
+        public QLSinhvien_NET1Context(DbContextOptions<QLSinhvien_NET1Context> options)
             : base(options)
         {
         }
 
+        public virtual DbSet<Dangnhap> Dangnhap { get; set; }
         public virtual DbSet<Dieukien> Dieukien { get; set; }
         public virtual DbSet<Hocphan> Hocphan { get; set; }
         public virtual DbSet<Ketqua> Ketqua { get; set; }
@@ -28,13 +29,33 @@ namespace ProjectNhom12.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-6P4KML7\\SQLEXPRESS2;Database=QLSinhvien_NET;Integrated Security=True;");
+                optionsBuilder.UseSqlServer("Server=.; Database=QLSinhvien_NET1;Integrated Security=True;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
+
+            modelBuilder.Entity<Dangnhap>(entity =>
+            {
+                entity.HasKey(e => e.Username)
+                    .HasName("PK__Dangnhap__F3DBC5733C389CD8");
+
+                entity.Property(e => e.Username)
+                    .HasColumnName("username")
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Loai).HasColumnName("loai");
+
+                entity.Property(e => e.Matkhau)
+                    .IsRequired()
+                    .HasColumnName("matkhau")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+            });
 
             modelBuilder.Entity<Dieukien>(entity =>
             {
@@ -117,7 +138,7 @@ namespace ProjectNhom12.Models
                     .HasName("pk_khoa");
 
                 entity.HasIndex(e => e.TenKhoa)
-                    .HasName("UQ__Khoa__AAD36158F68C1AA0")
+                    .HasName("UQ__Khoa__AAD36158AF51AB08")
                     .IsUnique();
 
                 entity.Property(e => e.MaKhoa)
@@ -192,6 +213,12 @@ namespace ProjectNhom12.Models
                     .WithMany(p => p.NhanVien)
                     .HasForeignKey(d => d.MaKhoa)
                     .HasConstraintName("fk_nhanvien_k");
+
+                entity.HasOne(d => d.MaNvNavigation)
+                    .WithOne(p => p.NhanVien)
+                    .HasForeignKey<NhanVien>(d => d.MaNv)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_nhanvien_dangnhap");
             });
 
             modelBuilder.Entity<Sinhvien>(entity =>
@@ -228,6 +255,12 @@ namespace ProjectNhom12.Models
                     .WithMany(p => p.Sinhvien)
                     .HasForeignKey(d => d.MaKhoa)
                     .HasConstraintName("fk_sinhvien_k");
+
+                entity.HasOne(d => d.MaSvNavigation)
+                    .WithOne(p => p.Sinhvien)
+                    .HasForeignKey<Sinhvien>(d => d.MaSv)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_sinhvien_dangnhap");
             });
         }
     }

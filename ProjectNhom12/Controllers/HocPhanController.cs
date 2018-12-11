@@ -9,23 +9,23 @@ using ProjectNhom12.Models;
 
 namespace ProjectNhom12.Controllers
 {
-    public class DieukiensController : Controller
+    public class HocPhanController : Controller
     {
-        private readonly QLSinhvien_NETContext _context;
+        private readonly QLSinhvien_NET1Context _context;
 
-        public DieukiensController(QLSinhvien_NETContext context)
+        public HocPhanController(QLSinhvien_NET1Context context)
         {
             _context = context;
         }
 
-        // GET: Dieukiens
+        // GET: HocPhan
         public async Task<IActionResult> Index()
         {
-            var qLSinhvien_NETContext = _context.Dieukien.Include(d => d.MaMhNavigation).Include(d => d.MaMhTruocNavigation);
-            return View(await qLSinhvien_NETContext.ToListAsync());
+            var qLSinhvien_NET1Context = _context.Hocphan.Include(h => h.MaMhNavigation);
+            return View(await qLSinhvien_NET1Context.ToListAsync());
         }
 
-        // GET: Dieukiens/Details/5
+        // GET: HocPhan/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -33,45 +33,42 @@ namespace ProjectNhom12.Controllers
                 return NotFound();
             }
 
-            var dieukien = await _context.Dieukien
-                .Include(d => d.MaMhNavigation)
-                .Include(d => d.MaMhTruocNavigation)
-                .FirstOrDefaultAsync(m => m.MaMh == id);
-            if (dieukien == null)
+            var hocphan = await _context.Hocphan
+                .Include(h => h.MaMhNavigation)
+                .FirstOrDefaultAsync(m => m.MaHp == id);
+            if (hocphan == null)
             {
                 return NotFound();
             }
 
-            return View(dieukien);
+            return View(hocphan);
         }
 
-        // GET: Dieukiens/Create
+        // GET: HocPhan/Create
         public IActionResult Create()
         {
             ViewData["MaMh"] = new SelectList(_context.Monhoc, "MaMh", "MaMh");
-            ViewData["MaMhTruoc"] = new SelectList(_context.Monhoc, "MaMh", "MaMh");
             return View();
         }
 
-        // POST: Dieukiens/Create
+        // POST: HocPhan/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaMh,MaMhTruoc")] Dieukien dieukien)
+        public async Task<IActionResult> Create([Bind("MaHp,MaMh,Hocky,Nam,Giangvien")] Hocphan hocphan)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(dieukien);
+                _context.Add(hocphan);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MaMh"] = new SelectList(_context.Monhoc, "MaMh", "MaMh", dieukien.MaMh);
-            ViewData["MaMhTruoc"] = new SelectList(_context.Monhoc, "MaMh", "MaMh", dieukien.MaMhTruoc);
-            return View(dieukien);
+            ViewData["MaMh"] = new SelectList(_context.Monhoc, "MaMh", "MaMh", hocphan.MaMh);
+            return View(hocphan);
         }
 
-        // GET: Dieukiens/Edit/5
+        // GET: HocPhan/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -79,24 +76,23 @@ namespace ProjectNhom12.Controllers
                 return NotFound();
             }
 
-            var dieukien = await _context.Dieukien.FindAsync(id);
-            if (dieukien == null)
+            var hocphan = await _context.Hocphan.FindAsync(id);
+            if (hocphan == null)
             {
                 return NotFound();
             }
-            ViewData["MaMh"] = new SelectList(_context.Monhoc, "MaMh", "MaMh", dieukien.MaMh);
-            ViewData["MaMhTruoc"] = new SelectList(_context.Monhoc, "MaMh", "MaMh", dieukien.MaMhTruoc);
-            return View(dieukien);
+            ViewData["MaMh"] = new SelectList(_context.Monhoc, "MaMh", "MaMh", hocphan.MaMh);
+            return View(hocphan);
         }
 
-        // POST: Dieukiens/Edit/5
+        // POST: HocPhan/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("MaMh,MaMhTruoc")] Dieukien dieukien)
+        public async Task<IActionResult> Edit(string id, [Bind("MaHp,MaMh,Hocky,Nam,Giangvien")] Hocphan hocphan)
         {
-            if (id != dieukien.MaMh)
+            if (id != hocphan.MaHp)
             {
                 return NotFound();
             }
@@ -105,12 +101,12 @@ namespace ProjectNhom12.Controllers
             {
                 try
                 {
-                    _context.Update(dieukien);
+                    _context.Update(hocphan);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DieukienExists(dieukien.MaMh))
+                    if (!HocphanExists(hocphan.MaHp))
                     {
                         return NotFound();
                     }
@@ -121,12 +117,11 @@ namespace ProjectNhom12.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MaMh"] = new SelectList(_context.Monhoc, "MaMh", "MaMh", dieukien.MaMh);
-            ViewData["MaMhTruoc"] = new SelectList(_context.Monhoc, "MaMh", "MaMh", dieukien.MaMhTruoc);
-            return View(dieukien);
+            ViewData["MaMh"] = new SelectList(_context.Monhoc, "MaMh", "MaMh", hocphan.MaMh);
+            return View(hocphan);
         }
 
-        // GET: Dieukiens/Delete/5
+        // GET: HocPhan/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -134,32 +129,31 @@ namespace ProjectNhom12.Controllers
                 return NotFound();
             }
 
-            var dieukien = await _context.Dieukien
-                .Include(d => d.MaMhNavigation)
-                .Include(d => d.MaMhTruocNavigation)
-                .FirstOrDefaultAsync(m => m.MaMh == id);
-            if (dieukien == null)
+            var hocphan = await _context.Hocphan
+                .Include(h => h.MaMhNavigation)
+                .FirstOrDefaultAsync(m => m.MaHp == id);
+            if (hocphan == null)
             {
                 return NotFound();
             }
 
-            return View(dieukien);
+            return View(hocphan);
         }
 
-        // POST: Dieukiens/Delete/5
+        // POST: HocPhan/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var dieukien = await _context.Dieukien.FindAsync(id);
-            _context.Dieukien.Remove(dieukien);
+            var hocphan = await _context.Hocphan.FindAsync(id);
+            _context.Hocphan.Remove(hocphan);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool DieukienExists(string id)
+        private bool HocphanExists(string id)
         {
-            return _context.Dieukien.Any(e => e.MaMh == id);
+            return _context.Hocphan.Any(e => e.MaHp == id);
         }
     }
 }

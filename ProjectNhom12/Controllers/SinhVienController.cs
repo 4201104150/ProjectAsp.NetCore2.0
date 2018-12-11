@@ -9,23 +9,23 @@ using ProjectNhom12.Models;
 
 namespace ProjectNhom12.Controllers
 {
-    public class KetquasController : Controller
+    public class SinhVienController : Controller
     {
-        private readonly QLSinhvien_NETContext _context;
+        private readonly QLSinhvien_NET1Context _context;
 
-        public KetquasController(QLSinhvien_NETContext context)
+        public SinhVienController(QLSinhvien_NET1Context context)
         {
             _context = context;
         }
 
-        // GET: Ketquas
+        // GET: SinhVien
         public async Task<IActionResult> Index()
         {
-            var qLSinhvien_NETContext = _context.Ketqua.Include(k => k.MaHpNavigation).Include(k => k.MaSvNavigation);
-            return View(await qLSinhvien_NETContext.ToListAsync());
+            var qLSinhvien_NET1Context = _context.Sinhvien.Include(s => s.MaKhoaNavigation).Include(s => s.MaSvNavigation);
+            return View(await qLSinhvien_NET1Context.ToListAsync());
         }
 
-        // GET: Ketquas/Details/5
+        // GET: SinhVien/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -33,45 +33,45 @@ namespace ProjectNhom12.Controllers
                 return NotFound();
             }
 
-            var ketqua = await _context.Ketqua
-                .Include(k => k.MaHpNavigation)
-                .Include(k => k.MaSvNavigation)
+            var sinhvien = await _context.Sinhvien
+                .Include(s => s.MaKhoaNavigation)
+                .Include(s => s.MaSvNavigation)
                 .FirstOrDefaultAsync(m => m.MaSv == id);
-            if (ketqua == null)
+            if (sinhvien == null)
             {
                 return NotFound();
             }
 
-            return View(ketqua);
+            return View(sinhvien);
         }
 
-        // GET: Ketquas/Create
+        // GET: SinhVien/Create
         public IActionResult Create()
         {
-            ViewData["MaHp"] = new SelectList(_context.Hocphan, "MaHp", "MaHp");
-            ViewData["MaSv"] = new SelectList(_context.Sinhvien, "MaSv", "MaSv");
+            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa");
+            ViewData["MaSv"] = new SelectList(_context.Dangnhap, "Username", "Username");
             return View();
         }
 
-        // POST: Ketquas/Create
+        // POST: SinhVien/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaSv,MaHp,Diem")] Ketqua ketqua)
+        public async Task<IActionResult> Create([Bind("MaSv,TenSv,Nam,MaKhoa,HinhSv,Gioitinh,Cmnd,Diachi")] Sinhvien sinhvien)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(ketqua);
+                _context.Add(sinhvien);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MaHp"] = new SelectList(_context.Hocphan, "MaHp", "MaHp", ketqua.MaHp);
-            ViewData["MaSv"] = new SelectList(_context.Sinhvien, "MaSv", "MaSv", ketqua.MaSv);
-            return View(ketqua);
+            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa", sinhvien.MaKhoa);
+            ViewData["MaSv"] = new SelectList(_context.Dangnhap, "Username", "Username", sinhvien.MaSv);
+            return View(sinhvien);
         }
 
-        // GET: Ketquas/Edit/5
+        // GET: SinhVien/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -79,24 +79,24 @@ namespace ProjectNhom12.Controllers
                 return NotFound();
             }
 
-            var ketqua = await _context.Ketqua.FindAsync(id);
-            if (ketqua == null)
+            var sinhvien = await _context.Sinhvien.FindAsync(id);
+            if (sinhvien == null)
             {
                 return NotFound();
             }
-            ViewData["MaHp"] = new SelectList(_context.Hocphan, "MaHp", "MaHp", ketqua.MaHp);
-            ViewData["MaSv"] = new SelectList(_context.Sinhvien, "MaSv", "MaSv", ketqua.MaSv);
-            return View(ketqua);
+            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa", sinhvien.MaKhoa);
+            ViewData["MaSv"] = new SelectList(_context.Dangnhap, "Username", "Username", sinhvien.MaSv);
+            return View(sinhvien);
         }
 
-        // POST: Ketquas/Edit/5
+        // POST: SinhVien/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("MaSv,MaHp,Diem")] Ketqua ketqua)
+        public async Task<IActionResult> Edit(string id, [Bind("MaSv,TenSv,Nam,MaKhoa,HinhSv,Gioitinh,Cmnd,Diachi")] Sinhvien sinhvien)
         {
-            if (id != ketqua.MaSv)
+            if (id != sinhvien.MaSv)
             {
                 return NotFound();
             }
@@ -105,12 +105,12 @@ namespace ProjectNhom12.Controllers
             {
                 try
                 {
-                    _context.Update(ketqua);
+                    _context.Update(sinhvien);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!KetquaExists(ketqua.MaSv))
+                    if (!SinhvienExists(sinhvien.MaSv))
                     {
                         return NotFound();
                     }
@@ -121,12 +121,12 @@ namespace ProjectNhom12.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MaHp"] = new SelectList(_context.Hocphan, "MaHp", "MaHp", ketqua.MaHp);
-            ViewData["MaSv"] = new SelectList(_context.Sinhvien, "MaSv", "MaSv", ketqua.MaSv);
-            return View(ketqua);
+            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa", sinhvien.MaKhoa);
+            ViewData["MaSv"] = new SelectList(_context.Dangnhap, "Username", "Username", sinhvien.MaSv);
+            return View(sinhvien);
         }
 
-        // GET: Ketquas/Delete/5
+        // GET: SinhVien/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -134,32 +134,32 @@ namespace ProjectNhom12.Controllers
                 return NotFound();
             }
 
-            var ketqua = await _context.Ketqua
-                .Include(k => k.MaHpNavigation)
-                .Include(k => k.MaSvNavigation)
+            var sinhvien = await _context.Sinhvien
+                .Include(s => s.MaKhoaNavigation)
+                .Include(s => s.MaSvNavigation)
                 .FirstOrDefaultAsync(m => m.MaSv == id);
-            if (ketqua == null)
+            if (sinhvien == null)
             {
                 return NotFound();
             }
 
-            return View(ketqua);
+            return View(sinhvien);
         }
 
-        // POST: Ketquas/Delete/5
+        // POST: SinhVien/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var ketqua = await _context.Ketqua.FindAsync(id);
-            _context.Ketqua.Remove(ketqua);
+            var sinhvien = await _context.Sinhvien.FindAsync(id);
+            _context.Sinhvien.Remove(sinhvien);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool KetquaExists(string id)
+        private bool SinhvienExists(string id)
         {
-            return _context.Ketqua.Any(e => e.MaSv == id);
+            return _context.Sinhvien.Any(e => e.MaSv == id);
         }
     }
 }

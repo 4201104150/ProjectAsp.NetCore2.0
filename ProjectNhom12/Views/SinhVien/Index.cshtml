@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjectNhom12.Models.NhanVien>
+﻿@model IEnumerable<ProjectNhom12.Models.Sinhvien>
 
 @{
     ViewData["Title"] = "Index";
@@ -14,13 +14,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TenNv)
+                @Html.DisplayNameFor(model => model.TenSv)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ngayvaolam)
+                @Html.DisplayNameFor(model => model.Nam)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HinhNv)
+                @Html.DisplayNameFor(model => model.HinhSv)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Gioitinh)
@@ -34,6 +34,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.MaKhoaNavigation)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaSvNavigation)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -41,13 +44,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TenNv)
+                @Html.DisplayFor(modelItem => item.TenSv)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Ngayvaolam)
+                @Html.DisplayFor(modelItem => item.Nam)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HinhNv)
+                @Html.DisplayFor(modelItem => item.HinhSv)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Gioitinh)
@@ -62,9 +65,12 @@
                 @Html.DisplayFor(modelItem => item.MaKhoaNavigation.MaKhoa)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.MaNv">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MaNv">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MaNv">Delete</a>
+                @Html.DisplayFor(modelItem => item.MaSvNavigation.Username)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MaSv">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MaSv">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MaSv">Delete</a>
             </td>
         </tr>
 }

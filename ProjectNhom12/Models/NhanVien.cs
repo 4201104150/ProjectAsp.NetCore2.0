@@ -15,5 +15,6 @@ namespace ProjectNhom12.Models
         public string Diachi { get; set; }
 
         public virtual Khoa MaKhoaNavigation { get; set; }
+        public virtual Dangnhap MaNvNavigation { get; set; }
     }
 }

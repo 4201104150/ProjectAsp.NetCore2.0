@@ -9,22 +9,23 @@ using ProjectNhom12.Models;
 
 namespace ProjectNhom12.Controllers
 {
-    public class KhoasController : Controller
+    public class MonHocController : Controller
     {
-        private readonly QLSinhvien_NETContext _context;
+        private readonly QLSinhvien_NET1Context _context;
 
-        public KhoasController(QLSinhvien_NETContext context)
+        public MonHocController(QLSinhvien_NET1Context context)
         {
             _context = context;
         }
 
-        // GET: Khoas
+        // GET: MonHoc
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Khoa.ToListAsync());
+            var qLSinhvien_NET1Context = _context.Monhoc.Include(m => m.MaKhoaNavigation);
+            return View(await qLSinhvien_NET1Context.ToListAsync());
         }
 
-        // GET: Khoas/Details/5
+        // GET: MonHoc/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -32,39 +33,42 @@ namespace ProjectNhom12.Controllers
                 return NotFound();
             }
 
-            var khoa = await _context.Khoa
-                .FirstOrDefaultAsync(m => m.MaKhoa == id);
-            if (khoa == null)
+            var monhoc = await _context.Monhoc
+                .Include(m => m.MaKhoaNavigation)
+                .FirstOrDefaultAsync(m => m.MaMh == id);
+            if (monhoc == null)
             {
                 return NotFound();
             }
 
-            return View(khoa);
+            return View(monhoc);
         }
 
-        // GET: Khoas/Create
+        // GET: MonHoc/Create
         public IActionResult Create()
         {
+            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa");
             return View();
         }
 
-        // POST: Khoas/Create
+        // POST: MonHoc/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaKhoa,TenKhoa,Nam,HinhKhoa")] Khoa khoa)
+        public async Task<IActionResult> Create([Bind("MaMh,TenMh,Tinchi,MaKhoa")] Monhoc monhoc)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(khoa);
+                _context.Add(monhoc);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(khoa);
+            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa", monhoc.MaKhoa);
+            return View(monhoc);
         }
 
-        // GET: Khoas/Edit/5
+        // GET: MonHoc/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -72,22 +76,23 @@ namespace ProjectNhom12.Controllers
                 return NotFound();
             }
 
-            var khoa = await _context.Khoa.FindAsync(id);
-            if (khoa == null)
+            var monhoc = await _context.Monhoc.FindAsync(id);
+            if (monhoc == null)
             {
                 return NotFound();
             }
-            return View(khoa);
+            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa", monhoc.MaKhoa);
+            return View(monhoc);
         }
 
-        // POST: Khoas/Edit/5
+        // POST: MonHoc/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("MaKhoa,TenKhoa,Nam,HinhKhoa")] Khoa khoa)
+        public async Task<IActionResult> Edit(string id, [Bind("MaMh,TenMh,Tinchi,MaKhoa")] Monhoc monhoc)
         {
-            if (id != khoa.MaKhoa)
+            if (id != monhoc.MaMh)
             {
                 return NotFound();
             }
@@ -96,12 +101,12 @@ namespace ProjectNhom12.Controllers
             {
                 try
                 {
-                    _context.Update(khoa);
+                    _context.Update(monhoc);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!KhoaExists(khoa.MaKhoa))
+                    if (!MonhocExists(monhoc.MaMh))
                     {
                         return NotFound();
                     }
@@ -112,10 +117,11 @@ namespace ProjectNhom12.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(khoa);
+            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa", monhoc.MaKhoa);
+            return View(monhoc);
         }
 
-        // GET: Khoas/Delete/5
+        // GET: MonHoc/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -123,30 +129,31 @@ namespace ProjectNhom12.Controllers
                 return NotFound();
             }
 
-            var khoa = await _context.Khoa
-                .FirstOrDefaultAsync(m => m.MaKhoa == id);
-            if (khoa == null)
+            var monhoc = await _context.Monhoc
+                .Include(m => m.MaKhoaNavigation)
+                .FirstOrDefaultAsync(m => m.MaMh == id);
+            if (monhoc == null)
             {
                 return NotFound();
             }
 
-            return View(khoa);
+            return View(monhoc);
         }
 
-        // POST: Khoas/Delete/5
+        // POST: MonHoc/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var khoa = await _context.Khoa.FindAsync(id);
-            _context.Khoa.Remove(khoa);
+            var monhoc = await _context.Monhoc.FindAsync(id);
+            _context.Monhoc.Remove(monhoc);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool KhoaExists(string id)
+        private bool MonhocExists(string id)
         {
-            return _context.Khoa.Any(e => e.MaKhoa == id);
+            return _context.Monhoc.Any(e => e.MaMh == id);
         }
     }
 }

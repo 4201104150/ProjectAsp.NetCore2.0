@@ -20,6 +20,7 @@ namespace ProjectNhom12.Models
         public string Diachi { get; set; }
 
         public virtual Khoa MaKhoaNavigation { get; set; }
+        public virtual Dangnhap MaSvNavigation { get; set; }
         public virtual ICollection<Ketqua> Ketqua { get; set; }
     }
 }

@@ -9,23 +9,22 @@ using ProjectNhom12.Models;
 
 namespace ProjectNhom12.Controllers
 {
-    public class NhanViensController : Controller
+    public class DangNhapController : Controller
     {
-        private readonly QLSinhvien_NETContext _context;
+        private readonly QLSinhvien_NET1Context _context;
 
-        public NhanViensController(QLSinhvien_NETContext context)
+        public DangNhapController(QLSinhvien_NET1Context context)
         {
             _context = context;
         }
 
-        // GET: NhanViens
+        // GET: DangNhap
         public async Task<IActionResult> Index()
         {
-            var qLSinhvien_NETContext = _context.NhanVien.Include(n => n.MaKhoaNavigation);
-            return View(await qLSinhvien_NETContext.ToListAsync());
+            return View(await _context.Dangnhap.ToListAsync());
         }
 
-        // GET: NhanViens/Details/5
+        // GET: DangNhap/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -33,42 +32,39 @@ namespace ProjectNhom12.Controllers
                 return NotFound();
             }
 
-            var nhanVien = await _context.NhanVien
-                .Include(n => n.MaKhoaNavigation)
-                .FirstOrDefaultAsync(m => m.MaNv == id);
-            if (nhanVien == null)
+            var dangnhap = await _context.Dangnhap
+                .FirstOrDefaultAsync(m => m.Username == id);
+            if (dangnhap == null)
             {
                 return NotFound();
             }
 
-            return View(nhanVien);
+            return View(dangnhap);
         }
 
-        // GET: NhanViens/Create
+        // GET: DangNhap/Create
         public IActionResult Create()
         {
-            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa");
             return View();
         }
 
-        // POST: NhanViens/Create
+        // POST: DangNhap/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaNv,TenNv,Ngayvaolam,MaKhoa,HinhNv,Gioitinh,Cmnd,Diachi")] NhanVien nhanVien)
+        public async Task<IActionResult> Create([Bind("Username,Matkhau,Loai")] Dangnhap dangnhap)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(nhanVien);
+                _context.Add(dangnhap);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa", nhanVien.MaKhoa);
-            return View(nhanVien);
+            return View(dangnhap);
         }
 
-        // GET: NhanViens/Edit/5
+        // GET: DangNhap/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -76,23 +72,22 @@ namespace ProjectNhom12.Controllers
                 return NotFound();
             }
 
-            var nhanVien = await _context.NhanVien.FindAsync(id);
-            if (nhanVien == null)
+            var dangnhap = await _context.Dangnhap.FindAsync(id);
+            if (dangnhap == null)
             {
                 return NotFound();
             }
-            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa", nhanVien.MaKhoa);
-            return View(nhanVien);
+            return View(dangnhap);
         }
 
-        // POST: NhanViens/Edit/5
+        // POST: DangNhap/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("MaNv,TenNv,Ngayvaolam,MaKhoa,HinhNv,Gioitinh,Cmnd,Diachi")] NhanVien nhanVien)
+        public async Task<IActionResult> Edit(string id, [Bind("Username,Matkhau,Loai")] Dangnhap dangnhap)
         {
-            if (id != nhanVien.MaNv)
+            if (id != dangnhap.Username)
             {
                 return NotFound();
             }
@@ -101,12 +96,12 @@ namespace ProjectNhom12.Controllers
             {
                 try
                 {
-                    _context.Update(nhanVien);
+                    _context.Update(dangnhap);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!NhanVienExists(nhanVien.MaNv))
+                    if (!DangnhapExists(dangnhap.Username))
                     {
                         return NotFound();
                     }
@@ -117,11 +112,10 @@ namespace ProjectNhom12.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa", nhanVien.MaKhoa);
-            return View(nhanVien);
+            return View(dangnhap);
         }
 
-        // GET: NhanViens/Delete/5
+        // GET: DangNhap/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -129,31 +123,30 @@ namespace ProjectNhom12.Controllers
                 return NotFound();
             }
 
-            var nhanVien = await _context.NhanVien
-                .Include(n => n.MaKhoaNavigation)
-                .FirstOrDefaultAsync(m => m.MaNv == id);
-            if (nhanVien == null)
+            var dangnhap = await _context.Dangnhap
+                .FirstOrDefaultAsync(m => m.Username == id);
+            if (dangnhap == null)
             {
                 return NotFound();
             }
 
-            return View(nhanVien);
+            return View(dangnhap);
         }
 
-        // POST: NhanViens/Delete/5
+        // POST: DangNhap/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var nhanVien = await _context.NhanVien.FindAsync(id);
-            _context.NhanVien.Remove(nhanVien);
+            var dangnhap = await _context.Dangnhap.FindAsync(id);
+            _context.Dangnhap.Remove(dangnhap);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool NhanVienExists(string id)
+        private bool DangnhapExists(string id)
         {
-            return _context.NhanVien.Any(e => e.MaNv == id);
+            return _context.Dangnhap.Any(e => e.Username == id);
         }
     }
 }
