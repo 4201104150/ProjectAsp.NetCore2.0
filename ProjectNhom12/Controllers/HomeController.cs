@@ -12,7 +12,7 @@ namespace ProjectNhom12.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View("TestView");
         }
 
         public IActionResult About()
@@ -32,6 +32,10 @@ namespace ProjectNhom12.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult TestView()
+        {
+            return View();
         }
     }
 }
