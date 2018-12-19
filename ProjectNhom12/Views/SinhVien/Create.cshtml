@@ -11,20 +11,21 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Manage" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="MaSv" class="control-label"></label>
-                <select asp-for="MaSv" class ="form-control" asp-items="ViewBag.MaSv"></select>
+                <input asp-for="MaSv" name="MaSv" class="form-control" value="@ViewBag.Ma" />
+                <span asp-validation-for="MaSv" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TenSv" class="control-label"></label>
-                <input asp-for="TenSv" class="form-control" />
+                <input asp-for="TenSv" name="Tensv" value="@ViewBag.TenSv"class="form-control" />
                 <span asp-validation-for="TenSv" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Nam" class="control-label"></label>
-                <input asp-for="Nam" class="form-control" />
+                <input asp-for="Nam" name="Namh" value="@ViewBag.Namh"class="form-control" />
                 <span asp-validation-for="Nam" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -33,26 +34,28 @@
             </div>
             <div class="form-group">
                 <label asp-for="HinhSv" class="control-label"></label>
-                <input asp-for="HinhSv" class="form-control" />
-                <span asp-validation-for="HinhSv" class="text-danger"></span>
+                <img src="~/HinhSV/@ViewBag.HinhSv" />
+                <input type="file" name="fHinh" />
             </div>
             <div class="form-group">
-                <label asp-for="Gioitinh" class="control-label"></label>
-                <input asp-for="Gioitinh" class="form-control" />
+                <label asp-for="Gioitinh" class="control-label"></label><br />
+                <input asp-for="Gioitinh" type="radio" name="Gioitinh" value="@ViewBag.Gioitinh"  />Nam
+                <input asp-for="Gioitinh" type="radio" name="Gioitinh" value="@ViewBag.Gioitinh"  />Nữ
                 <span asp-validation-for="Gioitinh" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Cmnd" class="control-label"></label>
-                <input asp-for="Cmnd" class="form-control" />
+                <input asp-for="Cmnd" name="Cmnd" value="@ViewBag.Cmnd" class="form-control" />
                 <span asp-validation-for="Cmnd" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Diachi" class="control-label"></label>
-                <input asp-for="Diachi" class="form-control" />
-                <span asp-validation-for="Diachi" class="text-danger"></span>
+                <input asp-for="Diachi" name="DiaChi"value="@ViewBag.DiaChi" class="form-control" />
+                <span asp-validation-for="Diachi"  class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" name="command" value="Lưu" class="btn btn-primary" />
+                <a asp-route-command="Mở" asp-action="Manage" class="btn btn-danger">Mở</a>
             </div>
         </form>
     </div>

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using ProjectNhom12.Models;
 
 namespace ProjectNhom12.Controllers
@@ -48,8 +51,8 @@ namespace ProjectNhom12.Controllers
         // GET: SinhVien/Create
         public IActionResult Create()
         {
-            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa");
-            ViewData["MaSv"] = new SelectList(_context.Dangnhap, "Username", "Username");
+            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "TenKhoa");
+            //ViewData["MaSv"] = new SelectList(_context.Dangnhap, "Username", "Username");
             return View();
         }
 
@@ -160,6 +163,39 @@ namespace ProjectNhom12.Controllers
         private bool SinhvienExists(string id)
         {
             return _context.Sinhvien.Any(e => e.MaSv == id);
+        }
+        public IActionResult Manage(Sinhvien sv,string command, IFormFile fHinh)
+        {
+            string fullPath=Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "HinhSV", "Sinhvien.json");
+            if (command == "Lưu")
+            {
+                if (fHinh != null)
+                {
+                    string url = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "HinhSV", fHinh.FileName);
+                    using (var f = new FileStream(url, FileMode.Create))
+                    {
+                        fHinh.CopyTo(f);
+                    }
+                    sv.HinhSv = fHinh.FileName;
+                }
+                string json = JsonConvert.SerializeObject(sv);
+                System.IO.File.WriteAllText(fullPath, json);
+            }
+            else if (command == "Mở")
+            {
+                string json = System.IO.File.ReadAllText(fullPath);
+                sv = JsonConvert.DeserializeObject<Sinhvien>(json);
+            }
+            ViewBag.Ma = sv.MaSv;
+            ViewBag.TenSv = sv.TenSv;
+            ViewBag.Namh = sv.Nam;
+            ViewBag.MaKhoa = sv.MaKhoa;
+            ViewBag.HinhSv = sv.HinhSv;
+            ViewBag.Gioitinh = sv.Gioitinh;
+            ViewBag.Cmnd = sv.Cmnd;
+            ViewBag.Diachi = sv.Diachi;
+
+            return View("Create");
         }
     }
 }
