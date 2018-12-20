@@ -15,7 +15,7 @@ namespace ProjectNhom12.Models
         public string MaKhoa { get; set; }
         public string TenKhoa { get; set; }
         public int? Nam { get; set; }
-        public string HinhKhoa { get; set; }
+        public string ThongTinKhoa { get; set; }
 
         public virtual ICollection<Monhoc> Monhoc { get; set; }
         public virtual ICollection<NhanVien> NhanVien { get; set; }

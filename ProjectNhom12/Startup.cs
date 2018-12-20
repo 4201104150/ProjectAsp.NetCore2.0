@@ -23,7 +23,7 @@ namespace ProjectNhom12
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<QLSinhvien_NET1Context>(opt => opt.UseSqlServer(Configuration.GetConnectionString("df")));
+            services.AddDbContext<QLSinhvien_NETContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("df")));
             services.AddMvc();
         }
 
