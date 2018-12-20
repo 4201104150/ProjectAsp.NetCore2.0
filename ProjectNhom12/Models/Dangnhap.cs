@@ -9,7 +9,7 @@ namespace ProjectNhom12.Models
         public string Matkhau { get; set; }
         public int Loai { get; set; }
 
-        public virtual NhanVien NhanVien { get; set; }
-        public virtual Sinhvien Sinhvien { get; set; }
+        public virtual Sinhvien Username1 { get; set; }
+        public virtual NhanVien UsernameNavigation { get; set; }
     }
 }

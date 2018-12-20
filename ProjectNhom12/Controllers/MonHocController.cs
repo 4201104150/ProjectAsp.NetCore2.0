@@ -9,23 +9,23 @@ using ProjectNhom12.Models;
 
 namespace ProjectNhom12.Controllers
 {
-    public class MonHocController : Controller
+    public class MonhocController : Controller
     {
-        private readonly QLSinhvien_NET1Context _context;
+        private readonly QLSinhvien_NETContext _context;
 
-        public MonHocController(QLSinhvien_NET1Context context)
+        public MonhocController(QLSinhvien_NETContext context)
         {
             _context = context;
         }
 
-        // GET: MonHoc
+        // GET: Monhoc
         public async Task<IActionResult> Index()
         {
-            var qLSinhvien_NET1Context = _context.Monhoc.Include(m => m.MaKhoaNavigation);
-            return View(await qLSinhvien_NET1Context.ToListAsync());
+            var qLSinhvien_NETContext = _context.Monhoc.Include(m => m.MaKhoaNavigation);
+            return View(await qLSinhvien_NETContext.ToListAsync());
         }
 
-        // GET: MonHoc/Details/5
+        // GET: Monhoc/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -44,14 +44,14 @@ namespace ProjectNhom12.Controllers
             return View(monhoc);
         }
 
-        // GET: MonHoc/Create
+        // GET: Monhoc/Create
         public IActionResult Create()
         {
             ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa");
             return View();
         }
 
-        // POST: MonHoc/Create
+        // POST: Monhoc/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -68,7 +68,7 @@ namespace ProjectNhom12.Controllers
             return View(monhoc);
         }
 
-        // GET: MonHoc/Edit/5
+        // GET: Monhoc/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -85,7 +85,7 @@ namespace ProjectNhom12.Controllers
             return View(monhoc);
         }
 
-        // POST: MonHoc/Edit/5
+        // POST: Monhoc/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -121,7 +121,7 @@ namespace ProjectNhom12.Controllers
             return View(monhoc);
         }
 
-        // GET: MonHoc/Delete/5
+        // GET: Monhoc/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -140,7 +140,7 @@ namespace ProjectNhom12.Controllers
             return View(monhoc);
         }
 
-        // POST: MonHoc/Delete/5
+        // POST: Monhoc/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)

@@ -1,0 +1,1020 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-repeat: no-repeat;
+            background-position: 100% 0%;
+            padding-right: 0px;
+            padding-left: 0px;
+            padding-bottom: 0px;
+            margin: 0px;
+            padding-top: 0px;
+            vertical-align: central;
+            background-color: aliceblue;
+        }
+        .example {
+            position: relative;
+            width: 917px;
+            height: 100px;
+            margin: 20px auto;
+            padding: 15px;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+        }
+        /* main menu styles */
+        .menuholder {
+            float: left;
+            font: normal bold 11px/35px verdana, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .menuholder .shadow {
+                -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+                -o-box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+                -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+                background: #888;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+                height: 10px;
+                left: 5%;
+                position: absolute;
+                top: -9px;
+                width: 90%;
+                z-index: 100;
+            }
+
+            .menuholder .back {
+                -moz-transition-duration: .4s;
+                -o-transition-duration: .4s;
+                -webkit-transition-duration: .4s;
+                background-color: transparent;
+                height: 0;
+                width: 100%;
+            }
+
+            .menuholder:hover div.back {
+                height: 300px;
+            }
+
+        ul.menu {
+            display: block;
+            float: left;
+            list-style: none;
+            margin: 0;
+            padding: 0 125px;
+            position: relative;
+        }
+
+            ul.menu li {
+                float: left;
+                margin: 0 5px 0 0;
+            }
+
+                ul.menu li > a {
+                    -moz-border-radius: 0 0 10px 10px;
+                    -moz-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+                    -moz-transition: all 0.2s ease-in-out;
+                    -o-border-radius: 0 0 10px 10px;
+                    -o-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+                    -o-transition: all 0.2s ease-in-out;
+                    -webkit-border-bottom-left-radius: 10px;
+                    -webkit-border-bottom-right-radius: 10px;
+                    -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+                    -webkit-transition: all 0.2s ease-in-out;
+                    border-radius: 0 0 10px 10px;
+                    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+                    color: #eee;
+                    display: block;
+                    padding: 0 10px;
+                    text-decoration: none;
+                    transition: all 0.2s ease-in-out;
+                }
+
+                ul.menu li a.red {
+                    background: #a00;
+                }
+
+                ul.menu li a.orange {
+                    background: #da0;
+                }
+
+                ul.menu li a.yellow {
+                    background: #aa0;
+                }
+
+                ul.menu li a.green {
+                    background: #060;
+                }
+
+                ul.menu li a.blue {
+                    background: #00a;
+                }
+
+                ul.menu li a.violet {
+                    background: #682bc2;
+                }
+
+        .menu li div.subs {
+            left: 0;
+            overflow: hidden;
+            position: absolute;
+            top: 35px;
+            width: 0;
+        }
+
+            .menu li div.subs dl {
+                -moz-transition-duration: .2s;
+                -o-transition-duration: .2s;
+                -webkit-transition-duration: .2s;
+                float: left;
+                margin: 0 130px 0 0;
+                overflow: hidden;
+                padding: 40px 0 5% 2%;
+                width: 0;
+            }
+
+        .menu dt {
+            color: chartreuse;
+            font-family: arial, sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            height: 20px;
+            line-height: 20px;
+            margin: 0;
+            padding: 0 0 0 10px;
+            white-space: nowrap;
+        }
+
+        .menu dd {
+            margin: 0;
+            padding: 0;
+            text-align: left;
+        }
+
+            .menu dd a {
+                background: transparent;
+                color: darkmagenta;
+                font-size: 12px;
+                height: 20px;
+                line-height: 20px;
+                padding: 0 0 0 10px;
+                text-align: left;
+                white-space: nowrap;
+                width: 80px;
+            }
+
+                .menu dd a:hover {
+                    color: #fc0;
+                }
+
+        .menu li:hover div.subs dl {
+            -moz-transition-delay: 0.2s;
+            -o-transition-delay: 0.2s;
+            -webkit-transition-delay: 0.2s;
+            margin-right: 2%;
+            width: 21%;
+        }
+
+        ul.menu li:hover > a, ul.menu li > a:hover {
+            background: #aaa;
+            color: #fff;
+            padding: 10px 10px 0;
+        }
+
+        ul.menu li a.red:hover, ul.menu li:hover a.red {
+            background: #c00;
+        }
+
+        ul.menu li a.orange:hover, ul.menu li:hover a.orange {
+            background: #fc0;
+        }
+
+        ul.menu li a.yellow:hover, ul.menu li:hover a.yellow {
+            background: #cc0;
+        }
+
+        ul.menu li a.green:hover, ul.menu li:hover a.green {
+            background: #080;
+        }
+
+        ul.menu li a.blue:hover, ul.menu li:hover a.blue {
+            background: #00c;
+        }
+
+        ul.menu li a.violet:hover, ul.menu li:hover a.violet {
+            background: #8a2be2;
+        }
+
+        .menu li:hover div.subs, .menu li a:hover div.subs {
+            width: 100%;
+        }
+        td.title {
+            font-family: tahoma, verdana;
+            font-weight: bold;
+            font-size: 11px;
+            COLOR: #00649D;
+            TEXT-DECORATION: none;
+        }
+        a.menumain:link {
+            font-family: tahoma, verdana;
+            font-weight: bold;
+            font-size: 11px;
+            COLOR: #00649D;
+            TEXT-DECORATION: none;
+        }
+    </style>
+    <title>CSS3 drop down menu #3</title>
+</head>
+<body>
+    <tr>
+        <td>
+            <img src="~/Mr.T_Hinh/DHSP.jpg" style="width: 1002px" height="143" border="0">
+        </td>
+    </tr>
+    <div class="example">
+        <div class="menuholder">
+            <ul class="menu slide">
+                <li><a href="https://www.script-tutorials.com/" class="red">Home</a></li>
+                <li>
+                    <a href="https://www.script-tutorials.com/" class="orange">Tutorials</a>
+                    <div class="subs">
+                        <dl>
+                            <dt>Links #1</dt>
+                            <dd><a href="https://www.script-tutorials.com/category/html-css/">HTML / CSS</a></dd>
+                            <dd><a href="https://www.script-tutorials.com/category/jquery/">JS / jQuery</a></dd>
+                            <dd><a href="https://www.script-tutorials.com/category/php/">PHP</a></dd>
+                        </dl>
+                        <dl>
+                            <dt>Links #2</dt>
+                            <dd><a href="https://www.script-tutorials.com/category/mysql/">MySQL</a></dd>
+                            <dd><a href="https://www.script-tutorials.com/category/xslt/">XSLT</a></dd>
+                            <dd><a href="https://www.script-tutorials.com/category/ajax/">Ajax</a></dd>
+                        </dl>
+                        <dl>
+                            <dt>Links #3</dt>
+                            <dd><a href="https://www.script-tutorials.com/category/html-css/">HTML / CSS</a></dd>
+                            <dd><a href="https://www.script-tutorials.com/category/jquery/">JS / jQuery</a></dd>
+                            <dd><a href="https://www.script-tutorials.com/category/php/">PHP</a></dd>
+                        </dl>
+                        <dl>
+                            <dt>Links #4</dt>
+                            <dd><a href="https://www.script-tutorials.com/category/mysql/">MySQL</a></dd>
+                            <dd><a href="https://www.script-tutorials.com/category/xslt/">XSLT</a></dd>
+                            <dd><a href="https://www.script-tutorials.com/category/ajax/">Ajax</a></dd>
+                        </dl>
+                    </div>
+                </li>
+                <li>
+                    <a href="https://www.script-tutorials.com/category/resources/" class="yellow">Resources</a>
+                    <div class="subs">
+                        <dl>
+                            <dt>Links #5</dt>
+                            <dd><a href="https://www.script-tutorials.com/category/php/">PHP</a></dd>
+                            <dd><a href="https://www.script-tutorials.com/category/mysql/">MySQL</a></dd>
+                        </dl>
+                        <dl>
+                            <dt>Links #6</dt>
+                            <dd><a href="https://www.script-tutorials.com/category/xslt/">XSLT</a></dd>
+                            <dd><a href="https://www.script-tutorials.com/category/ajax/">Ajax</a></dd>
+                        </dl>
+                        <dl>
+                            <dt>Links #7</dt>
+                            <dd><a href="https://www.script-tutorials.com/category/html-css/">HTML / CSS</a></dd>
+                            <dd><a href="https://www.script-tutorials.com/category/jquery/">JS / jQuery</a></dd>
+                        </dl>
+                        <dl>
+                            <dt>Links #8</dt>
+                            <dd><a href="https://www.script-tutorials.com/category/mysql/">MySQL</a></dd>
+                            <dd><a href="https://www.script-tutorials.com/category/ajax/">Ajax</a></dd>
+                        </dl>
+                    </div>
+                </li>
+                <li><a href="https://www.script-tutorials.com/category/resources/" class="green">Other</a></li>
+                <li><a href="https://www.script-tutorials.com/about/" class="blue">About</a></li>
+                <li><a href="https://www.script-tutorials.com/creating-css3-dropdown-menu-3/" class="violet">Back</a></li>
+            </ul>
+            <div class="back"></div>
+            <div class="shadow"></div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    <table id="table6" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+        <tbody>
+            <tr>
+                <td width="10" height="300">&nbsp;</td>
+                <td>
+                    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+                    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
+                    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/start/jquery-ui.css" rel="stylesheet" type="text/css">
+
+                    <script type="text/javascript" language="javascript">
+                        function OpenWindowHelp(objURL) {
+                            var test = window.open(objURL, "Window", "status=0, toolbar=0, menubar=0, directories =0, resizable=1, width=650, height=600,scrollbars=yes, location=0, Window.moveTo(100,100);");
+                        }
+                    </script>
+
+                    <table id="table1" width="1002" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <table id="table6" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <table id="table7" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <table id="table8" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td width="223" valign="top">
+                                                                                    <table id="table9" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <img src="images/top_fr_left.gif" width="223" height="5" border="0">
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td background="images/bg_fr_left.gif">
+                                                                                                    <table id="table12" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                        <tbody>
+                                                                                                            <tr>
+                                                                                                                <td height="37">
+                                                                                                                    <table id="table14" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td width="42">
+                                                                                                                                    <p align="center">
+                                                                                                                                        <img src="images/promotion.png" width="24" height="24">
+                                                                                                                                    </p>
+                                                                                                                                </td>
+                                                                                                                                <td class="title">THANH CÔNG CỤ</td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td bgcolor="#e3ebef">
+                                                                                                                    <img src="images/dot.gif" width="1" height="1" border="0">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td height="20">
+                                                                                                                    <table id="table178" width="96%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="contentnews1" height="20" align="left">
+                                                                                                                                    <table id="table29" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="40">
+                                                                                                                                                    <p align="center">
+                                                                                                                                                        <img src="~/Mr.T_Hinh/home.png" width="24" height="24">
+                                                                                                                                                    </p>
+                                                                                                                                                </td>
+                                                                                                                                                <td>
+                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lnkHome" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkHome','')">Trang của bạn</a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td bgcolor="#e3ebef">
+                                                                                                                    <img src="images/dot.gif" width="1" height="1" border="0">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td height="20">
+                                                                                                                    <table id="table179" width="96%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="contentnews1" height="20" align="left">
+                                                                                                                                    <table id="table28" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="40">
+                                                                                                                                                    <p align="center">
+                                                                                                                                                        <img src="~/Mr.T_Hinh/user.png" width="24" height="24">
+                                                                                                                                                    </p>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="title">
+                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lbtnThongBaoSinhVien" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lbtnThongBaoSinhVien','')">Thông báo sinh viên</a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td bgcolor="#e3ebef">
+                                                                                                                    <img src="images/dot.gif" width="1" height="1" border="0">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td height="20">
+                                                                                                                    <table id="table179" width="96%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="contentnews1" height="20" align="left">
+                                                                                                                                    <table id="table28" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="40">
+                                                                                                                                                    <p align="center">
+                                                                                                                                                        <img src="~/Mr.T_Hinh/user.png" width="24" height="24">
+                                                                                                                                                    </p>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="title">
+                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lnkInfo" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkInfo','')">Thông tin cá nhân</a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td bgcolor="#e3ebef">
+                                                                                                                    <img src="images/dot.gif" width="1" height="1" border="0">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td height="20">
+                                                                                                                    <table id="table180" width="96%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="contentnews1" height="20" align="left">
+                                                                                                                                    <table id="table27" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="40">
+                                                                                                                                                    <p align="center">
+                                                                                                                                                        <img src="~/Mr.T_Hinh/text_page.png" width="24" height="24">
+                                                                                                                                                    </p>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="title">
+                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lnkStudyProgram" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkStudyProgram','')">Chương trình đào tạo</a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td bgcolor="#e3ebef">
+                                                                                                                    <img src="images/dot.gif" width="1" height="1" border="0">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td height="20">
+                                                                                                                    <table id="table15" width="96%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="contentnews1" height="20" align="left">
+                                                                                                                                    <table id="table25" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="40">
+                                                                                                                                                    <p align="center">
+                                                                                                                                                        <img src="~/Mr.T_Hinh/pencil.png" width="24" height="24">
+                                                                                                                                                    </p>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="title">
+                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lnkDangKy" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkDangKy','')">Đăng ký học phần</a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td bgcolor="#e3ebef">
+                                                                                                                    <img src="images/dot.gif" width="1" height="1" border="0">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td height="20">
+                                                                                                                    <table id="table16" width="96%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="contentnews1" height="20" align="left">
+                                                                                                                                    <table id="table24" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="40">
+                                                                                                                                                    <p align="center">
+                                                                                                                                                        <img src="images/calendar.png" width="24" height="24">
+                                                                                                                                                    </p>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="title">
+                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lnkThoiKhoaBieu" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkThoiKhoaBieu','')">Thời khóa biểu - Lịch thi</a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td bgcolor="#e3ebef">
+                                                                                                                    <img src="images/dot.gif" alt="" width="1" height="1" border="0">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td height="20">
+                                                                                                                    <table id="table17" width="96%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="contentnews1" height="20" align="left">
+                                                                                                                                    <table id="table26" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="40">
+                                                                                                                                                    <p align="center">
+                                                                                                                                                        <img src="~/Mr.T_Hinh/find.png" width="24" height="24">
+                                                                                                                                                    </p>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="title">
+                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lnkDiem" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkDiem','')">Xem điểm</a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td bgcolor="#e3ebef">
+                                                                                                                    <img src="images/dot.gif" alt="" width="1" height="1" border="0">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td height="20">
+                                                                                                                    <table id="table2" width="96%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="contentnews1" height="20" align="left">
+                                                                                                                                    <table id="table3" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="40">
+                                                                                                                                                    <p align="center">
+                                                                                                                                                        <img src="images/marks.gif" width="24" height="24">
+                                                                                                                                                    </p>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="title">
+                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lnkYkien" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkYkien','')">Ý kiến - thảo luận</a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td height="20">
+                                                                                                                    <table id="table2" width="96%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="contentnews1" height="20" align="left">
+                                                                                                                                    <table id="table3" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="40">
+                                                                                                                                                    <p align="center">
+                                                                                                                                                        <img src="/images/books.png" width="24" height="24">
+                                                                                                                                                    </p>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="title">
+                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lnkNhapDiemRenLuyen" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkNhapDiemRenLuyen','')">Điểm rèn luyện</a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td bgcolor="#e3ebef">
+                                                                                                                    <img src="images/dot.gif" alt="" width="1" height="1" border="0">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td height="20">
+                                                                                                                    <table id="table18" width="96%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="contentnews1" height="20" align="left">
+                                                                                                                                    <table id="table23" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="40">
+                                                                                                                                                    <p align="center">
+                                                                                                                                                        <img src="images/monitor.png" width="24" height="24">
+                                                                                                                                                    </p>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="title">
+                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lnkAccount" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkAccount','')">Tài khoản sinh viên</a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+
+
+                                                                                                            <tr>
+                                                                                                                <td bgcolor="#e3ebef">
+                                                                                                                    <img src="images/dot.gif" alt="" width="1" height="1" border="0">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td height="20">
+                                                                                                                    <table id="table18" width="96%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="contentnews1" height="20" align="left">
+                                                                                                                                    <table id="table23" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="40">
+                                                                                                                                                    <p align="center">
+                                                                                                                                                        <img src="images/money.png" width="24" height="24">
+                                                                                                                                                    </p>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="title">
+                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lnkAccountFee" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkAccountFee','')">Thanh toán học phí</a>
+
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+
+
+                                                                                                            <tr style="display: none">
+                                                                                                                <td bgcolor="#e3ebef">
+                                                                                                                    <img src="images/dot.gif" width="1" height="1" border="0">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr style="display: none">
+                                                                                                                <td height="20">
+                                                                                                                    <table id="table4" width="96%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="contentnews1" height="20" align="left">
+                                                                                                                                    <table id="table5" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="40">
+                                                                                                                                                    <p align="center">
+                                                                                                                                                        <img src="images/books.png" width="24" height="24">
+                                                                                                                                                    </p>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="title">
+                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lnkChuyennganh" class="aspNetDisabled menumain">Đăng ký chuyên ngành</a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td bgcolor="#e3ebef">
+                                                                                                                    <img src="images/dot.gif" alt="" width="1" height="1" border="0">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td height="20">
+                                                                                                                    <table id="table10" width="96%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="contentnews1" height="20" align="left">
+                                                                                                                                    <table id="table11" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="40">
+                                                                                                                                                    <p align="center">
+                                                                                                                                                        <img src="images/accept.png" width="24" height="24">
+                                                                                                                                                    </p>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="title">
+                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lnkGhidanhtuchon" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkGhidanhtuchon','')">Ghi danh môn tự chọn</a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td bgcolor="#e3ebef">
+                                                                                                                    <img src="images/dot.gif" width="1" height="1" border="0">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td height="20">
+                                                                                                                    <table id="table13" width="96%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="contentnews1" height="20" align="left">
+                                                                                                                                    <table id="table30" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="40">
+                                                                                                                                                    <p align="center">
+                                                                                                                                                        <img src="images/graduation.png" width="24" height="24">
+                                                                                                                                                    </p>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="title">
+                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lnkDangkyxettotnghiep" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkDangkyxettotnghiep','')">Đăng ký xét tốt nghiệp</a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td bgcolor="#e3ebef">
+                                                                                                                    <img src="images/dot.gif" alt="" width="1" height="1" border="0">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td height="20">
+                                                                                                                    <table id="table19" width="96%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="contentnews1" height="20" align="left">
+                                                                                                                                    <table id="table22" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="40">
+                                                                                                                                                    <p align="center">
+                                                                                                                                                        <img src="images/info.png" width="24" height="24">
+                                                                                                                                                    </p>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="menumain">
+                                                                                                                                                    <strong><a href="Portlets/UIS_MySpace/Student/UIS_Help.htm" target="_blank" class="menumain">Hướng dẫn sử dụng</a></strong>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td bgcolor="#e3ebef">
+                                                                                                                    <img src="images/dot.gif" alt="" width="1" height="1" border="0">
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                            <tr>
+                                                                                                                <td height="20">
+                                                                                                                    <table id="table20" width="96%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="contentnews1" height="20" align="left">
+                                                                                                                                    <table id="table21" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="40">
+                                                                                                                                                    <p align="center">
+                                                                                                                                                        <img src="images/favorite.png" width="24" height="24">
+                                                                                                                                                    </p>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="title">
+                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lnkThoat" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkThoat','')">Thoát</a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <img src="images/bottom_fr_left.gif" width="223" height="5" border="0">
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>&nbsp;	</td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>
+                                                                                                    <div align="center">
+
+                                                                                                        <table id="table182" width="92%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                            <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td height="25">
+                                                                                                                        <b>
+                                                                                                                            <font style="font-size: 8.5pt" face="Tahoma" color="#696969">
+                                                                                                                                Lượt truy cập:&nbsp;&nbsp; <span id="ContentPlaceHolder1_ctl00_ctl00_Online1_lblTotal">23045</span>
+                                                                                                                            </font>
+                                                                                                                        </b>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td height="1" bgcolor="#dbdbdb">
+                                                                                                                        <b>
+                                                                                                                            <font style="font-size: 8.5pt" face="Tahoma" color="#696969">
+                                                                                                                                <img src="../../images/dot.gif" width="1" height="1" border="0">
+                                                                                                                            </font>
+                                                                                                                        </b>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td class="thuvien" height="25">
+                                                                                                                        <b>
+                                                                                                                            <font style="font-size: 8.5pt" face="Tahoma" color="#696969">
+                                                                                                                                Đang online:&nbsp;&nbsp; <span id="ContentPlaceHolder1_ctl00_ctl00_Online1_lblOnline">85</span>
+                                                                                                                            </font>
+                                                                                                                        </b>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </tbody>
+                                                                                                        </table>
+                                                                                                    </div>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>&nbsp;</td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                                <td width="10" valign="top">&nbsp;</td>
+                                                                                <td valign="top">
+
+
+                                                                                    <script language="javascript">
+                                                                                        function OpenWindow(objURL) {
+                                                                                            window.open(objURL, "Window", "status=0, toolbar=0, menubar=0, directories =0, resizable=0, width=400, height=200, scrollbars=yes, location=0, Window.moveTo(200,200);");
+                                                                                        }
+                                                                                    </script>
+                                                                                    <script type="text/javascript">
+                                                                                        //<![CDATA[
+                                                                                        Sys.WebForms.PageRequestManager._initialize('ctl00$ContentPlaceHolder1$ctl00$ctl00$ctl00$ScriptManager1', 'frm', ['tctl00$ContentPlaceHolder1$ctl00$ctl00$ctl00$UpdatePanel1', 'ContentPlaceHolder1_ctl00_ctl00_ctl00_UpdatePanel1'], [], [], 90, 'ctl00');
+                                                                                        //]]>
+                                                                                    </script>
+
+                                                                                    <div id="ContentPlaceHolder1_ctl00_ctl00_ctl00_UpdatePanel1">
+                                                                                        <table id="Table" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td>
+                                                                                                        <table id="Table2" class="module_td_dl" width="100%" cellspacing="1" cellpadding="1" border="0">
+                                                                                                            <tbody>
+                                                                                                                <tr>
+                                                                                                                    <td colspan="2" style="width:100%;" valign="top" align="center">
+                                                                                                                        <table id="Table1" width="100%" cellspacing="1" cellpadding="1" border="0">
+                                                                                                                            <tbody>
+                                                                                                                                <tr>
+                                                                                                                                    <td colspan="4" style="width:100%;" align="left">
+                                                                                                                                        &nbsp;&nbsp;
+                                                                                                                                        <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_lbInfo" class="StudentInfoDetails_normal_dl">NGUYỄN VĂN TUẤN [Mã số: 42.01.104.150]</span>
+                                                                                                                                    </td>
+                                                                                                                                </tr>
+                                                                                                                                <tr>
+                                                                                                                                    <td align="right">
+                                                                                                                                        Chọn chương trình đào tạo : <select name="ctl00$ContentPlaceHolder1$ctl00$ctl00$ctl00$ddlStudyProgramID" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder1$ctl00$ctl00$ctl00$ddlStudyProgramID\',\'\')', 0)" id="ContentPlaceHolder1_ctl00_ctl00_ctl00_ddlStudyProgramID">
+                                                                                                                                            <option selected="selected" value="K4252480201_CNPM">Công nghệ thông tin - Công nghệ phần mềm và hệ thống thông tin</option>
+
+                                                                                                                                        </select>
+                                                                                                                                    </td>
+                                                                                                                                    <td align="left">
+                                                                                                                                        Chọn học kỳ: <select name="ctl00$ContentPlaceHolder1$ctl00$ctl00$ctl00$ddlHocKy" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder1$ctl00$ctl00$ctl00$ddlHocKy\',\'\')', 0)" id="ContentPlaceHolder1_ctl00_ctl00_ctl00_ddlHocKy" class="StudentInfoDetails_normal_dl" style="width:88px;">
+                                                                                                                                            <option selected="selected" value="0">Tất cả</option>
+                                                                                                                                            <option value="HK01">Học kỳ 1</option>
+                                                                                                                                            <option value="HK02">Học kỳ 2</option>
+                                                                                                                                            <option value="HK03">Học kỳ 3</option>
+                                                                                                                                            <option value="HK04">Học kỳ 4</option>
+                                                                                                                                            <option value="HK05">Học kỳ 5</option>
+                                                                                                                                            <option value="HK06">Học kỳ 6</option>
+
+                                                                                                                                        </select>
+                                                                                                                                    </td>
+                                                                                                                                </tr>
+                                                                                                                                <tr></tr>
+                                                                                                                            </tbody>
+                                                                                                                        </table>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td style="background:#b5b6b5; height:1px; width:100%;" colspan="2" valign="top" align="center"></td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td colspan="2" style="width:100%; height: 46px;" valign="top" align="center">
+                                                                                                                        <table id="ContentPlaceHolder1_ctl00_ctl00_ctl00_tbSource" style="width:100%;">
+                                                                                                                            <tbody>
+                                                                                                                                <tr>
+                                                                                                                                    <td style="width:1%;">&nbsp;</td>
+                                                                                                                                    <td style="width:99%;">
+                                                                                                                                        <table width="100%" cellspacing="1" cellpadding="1">
+                                                                                                                                            <tbody>
+                                                                                                                                                <tr><td colspan="4" height="3"></td></tr>
+                                                                                                                                                <tr><td colspan="4" class="studyprogram_semeter_dl" align="left">Học kỳ 1</td></tr>
+                                                                                                                                                <tr>
+                                                                                                                                                    <td>
+                                                                                                                                                        <table width="100%" cellspacing="1" cellpadding="1" border="0">
+                                                                                                                                                            <tbody>
+                                                                                                                                                                <tr></tr>
+                                                                                                                                                            </tbody>
+                                                                                                                                                        </table>
+                                                                                                                                                    </td>
+                                                                                                                                                    <td width="10">&nbsp;</td>
+                                                                                                                                                </tr>
+                                                                                                                                            </tbody>
+                                                                                                                                        </table>
+                                                                                                                                    </td>
+                                                                                                                                </tr>
+                                                                                                                        </table>
+                                                                                                                        <div class="container body-content">
+                                                                                                                            @RenderBody()
+                                                                                                                            <hr />
+                                                                                                                            <footer>
+                                                                                                                                <p>&copy; 2018 - ProjectNhom12</p>
+                                                                                                                            </footer>
+                                                                                                                        </div>
+                                                                                    </div>
+                                                                    </table>
+                                                    </table>
+                                    </table>
+                    </table>
+    </table>
+</body>
+</html>
