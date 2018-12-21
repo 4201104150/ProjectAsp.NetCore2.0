@@ -11,7 +11,7 @@ namespace ProjectNhom12.Controllers
     public class HomeController : Controller
     {
         private readonly QLSinhvien_NETContext _context;
-        public static string ID;
+        public static int ID;
         public HomeController(QLSinhvien_NETContext context)
         {
             _context = context;
@@ -55,7 +55,7 @@ namespace ProjectNhom12.Controllers
             if (ModelState.IsValid)
             {
                 Sinhvien sv = _context.Sinhvien.SingleOrDefault(p => p.MaSv == model.Tendn && p.Pass == model.Matkhau);
-                ID = sv.Id.ToString();
+                ID = int.Parse(sv.Id.ToString());
                 int IDD = sv.Id;
                 ViewBag.ID = IDD;
                 if (sv == null)

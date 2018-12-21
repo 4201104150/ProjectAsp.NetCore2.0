@@ -73,7 +73,7 @@ namespace ProjectNhom12.Controllers
         // GET: Sinhvien/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            id = int.Parse(HomeController.ID);
+            id = HomeController.ID;
             if (id == null)
             {
                 return NotFound();
@@ -95,7 +95,7 @@ namespace ProjectNhom12.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit([Bind("Id,MaSv,Pass,TenSv,Nam,MaKhoa,HinhSv,Gioitinh,Cmnd,Diachi")] Sinhvien sinhvien)
         {
-            int s = int.Parse(HomeController.ID);
+            int s = HomeController.ID;
             if ( s!= sinhvien.Id)
             {
                 return NotFound();
