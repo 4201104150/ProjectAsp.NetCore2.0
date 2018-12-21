@@ -10,6 +10,12 @@ namespace ProjectNhom12.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly QLSinhvien_NETContext _context;
+        public static string ID;
+        public HomeController(QLSinhvien_NETContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
             return View("TestView");
@@ -35,6 +41,40 @@ namespace ProjectNhom12.Controllers
         }
         public IActionResult TestView()
         {
+            return View();
+        }
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(LoginViewModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                Sinhvien sv = _context.Sinhvien.SingleOrDefault(p => p.MaSv == model.Tendn && p.Pass == model.Matkhau);
+                ID = sv.Id.ToString();
+                int IDD = sv.Id;
+                ViewBag.ID = IDD;
+                if (sv == null)
+                {
+                    ModelState.AddModelError("Loi", "Không có người này.");
+                    return View();
+                }
+                else
+                {
+                    if (model.DoiTuong == "Sinh Viên")
+                    {
+                        //ghi session
+                        //HttpContext.Session.SetString("MaKH", kh.MaKh);
+                        HttpContext.Session.Set("MaSv", sv);
+                        //chuyển tới trang HangHoa (--> MyProfile)
+                        return RedirectToAction("Edit", "Sinhvien");
+                    }
+                }
+            }
             return View();
         }
     }
