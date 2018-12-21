@@ -1,0 +1,178 @@
+﻿
+@{
+    ViewData["Title"] = "lala";
+    Layout = "~/Views/Shared/_LayoutSinhVien.cshtml";
+}
+
+<table style="width: 100%">
+    <tbody>
+        <tr>
+            <td>
+                <div style="float: left; padding: 0px 10px 0px 0px;">
+                    <img class="icon icons8-Urgent-Message" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAExUlEQVRoge2ZfU+TVxjGn4+wj7CP4EcgPX3K01LeSthEN2QpW1KnhHXRauxkRDCxJGv4Q4k2j9VQshgyNJWYtHYIVHragqWAxSogQoOU8hKYDW0t4dof5AGFvgDDtiy9kuuv3ic5v97nvs5JHobJK6+88sorW7Le4Wost7nfj6Otd7iabRCbUU77OxRx11/fR46T+zsU8ae81P4ZyOTzC8BK+7Hy5PMLsBnlNA+SK86D5Jr/3yC97WWYGriIzaX7Wd9gOm8u38fUwEX0mcr3gngeK9HfUYE+UzlmB7VZ32wyzw7+hj5TOfo7KuB5rEx+tN7SS+gxFsPx4CTee69lfeOC50euwfHgJHqMxXhLLyU/Wp/OSHyBx5s+NawGDu6H1Vgcv5E1gMXxG3A/rIbVwOFNnxrxBX77t30P+3qgDT7bOVgNHIa7a7E6qc8YwOqkHsPdtbAaOPhs57AeaNtTc+DUWptqhffJT7AaOLy0nkV45uYXAwjP3MRL61lYDRy8T37E2lRr0tpDx++SvwVDj87AauDgf1aP2LzhyABi8wb4e+thNXAYenQGS/6WtGv+8z0SHG0C7ayC7W7RVmQvHz6yhSi13S0C7axCcLRp32uP7EIMDF3diuz2w0X27KB2O0oDQ1cPvP7Ib/adyP52X5H93rs3Sg/jL/JE2R3ZiY5IcLQpaZTmDIhgIbJtvAw990pAO6tAO6vQc68ENl6WNEpzDkTwRsiIhbHreOe6gneuK1gYu46NkDF1VwM8wp5WLFuaMd9+GaGuBqzZWxAPJO5czr1+o6/bMN1yHm65FJQQuKUcvJUKvCgtBiUElBD4fj6FUFdDboLEAzym/9gCGKv6BnNqNcI6HSJ6/Wde1GoxrVKBEoIRZSXCntbcAYkHePg1P8At4zD7S11CgN1eaWyEV1EOSghCXQ3ZBxEgvJUKrDQ2pgXYbaE7r0yq7IIEbv8Kt4zDolabcKMxsxkbPh82fD7ETKaENeOnT8NZJMHfrTJPVkCir9vglksxrVIl/cfjHg8ExczmhDVhnQ5DJXLYayShrIBMt5yHt1KRcibilO6AdHYmrVvUardSraDg64yDeCpLENRoUs7AfkEiej2G5HI4RKL6jIKs2VtACcFac3NqkN7eHZAkMyJ4srYWLomEZhQk1NWAF2XFaVPpo8WyDRLl+ZS1QY0GVCz+kFGQ+fbL8FYojhREmJPMd6Q0fUdiZvM2SOTWrdwDWbY0wy3jDgaSpnZOrYarsHCCYRiGecpL7Rn50PPnd5H9DHtEr9/qRJpuRPR6+E5VbTpZtpthmMx+eqNS8WqqyzCi1yPK84hTijilKevCOh0Gi2QxByFlTKZFRaKadF3Z8Pm2j9ZHiyVp3YRSGXVJJPPPCgq+yjgIwzAMFYtnhsvKYmlnJBpNeiEGNRpQQnYuwyyBFFBCMFtXl35OkhwpT2npulMstmetG4IchJRRQjBZW5t+8HfF7aBMFnGyrC/rEIKEzrgKCzfSvb/COh0mlMqok2VzoxO7NcCyJyghRkoIRioqPkyrVJhTq7Go1SKo0WBOrYa/ujrmKiyMU7H4H4dIVJ9zEJ9qgGVPOESieqdYbHdJJAuUEDhZNuySSPxOlu2mIlFNKoB/AQtVhWNdiF9mAAAAAElFTkSuQmCC" width="30" height="30">
+                </div>
+                <div style="float:left; padding-top: 5px">
+                    Bạn có  &nbsp;<span style="color: red; font-size: 14px; font-weight: bold;">
+                        <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_lblTinNhanSV">0</span>
+                    </span>&nbsp;
+                    tin nhắn chưa đọc
+                </div>
+                <div style="float:left; padding-top: 5px">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="ContentPlaceHolder1_ctl00_ctl00_ctl00_btnXemTinNhan" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$ctl00$btnXemTinNhan','')">Xem tin nhắn</a>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Thông tin nợ phí:
+                <table style="width: 100%; border-collapse: collapse; border: 1px solid #dfdfdf; text-align: center">
+                    <tbody>
+                        <tr class="cus-tr">
+                            <th class="cus-th">Năm học</th>
+                            <th class="cus-th">Học kỳ</th>
+                            <th class="cus-th">Số tiền nợ</th>
+                            <th class="cus-th">Thời hạn nộp</th>
+                        </tr>
+
+                        <tr>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label1_0">2016-2017</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label2_0">HK01</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label3_0">0</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label4_0"></span>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label1_1">2016-2017</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label2_1">HK02</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label3_1">0</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label4_1"></span>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label1_2">2017-2018</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label2_2">HK01</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label3_2">0</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label4_2"></span>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label1_3">2017-2018</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label2_3">HK02</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label3_3">0</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label4_3"></span>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label1_4">2018-2019</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label2_4">HK01</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label3_4">0</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label4_4"></span>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label1_5">2018-2019</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label2_5">HK02</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label3_5">4,144,000</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label4_5"></span>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Thông tin điểm rèn luyện:
+                <table style="width: 100%; border-collapse: collapse; border: 1px solid #dfdfdf; text-align: center">
+                    <tbody>
+                        <tr class="cus-tr">
+                            <th class="cus-th">Năm học</th>
+                            <th class="cus-th">Học kỳ</th>
+                            <th class="cus-th">Chưa đánh giá</th>
+                        </tr>
+
+                        <tr>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptDiemRenLuyen_Label1_0">2018-2019</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptDiemRenLuyen_Label2_0">HK01</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <img src="~/Mr.T_Hinh/true.jpg" title="Bạn chưa đánh giá" border="0">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptDiemRenLuyen_Label1_1">2018-2019</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptDiemRenLuyen_Label2_1">HK02</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <img src="~/Mr.T_Hinh/true.jpg" title="Bạn chưa đánh giá" border="0">
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

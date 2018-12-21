@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProjectNhom12.Models.Ketqua>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutSinhVien.cshtml";
+}
+<table class="table" border="1" style="border-collapse: collapse">
+    <thead>
+        <tr>
+            <th>
+                Điểm
+            </th>
+            <th>
+                Mã học phần
+            </th>
+            <th>
+                Kết quả
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaHpNavigation.MaHp)
+            </td>
+            <td>
+                @{ 
+                    if(item.Diem>=5)
+                    {
+                        <img src="~/Mr.T_Hinh/true.jpg">
+                    }
+                    else
+                    {
+                        <img src="~/Mr.T_Hinh/false.jpg"/>                   
+                    }
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

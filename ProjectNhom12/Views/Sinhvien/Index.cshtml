@@ -5,40 +5,32 @@
     Layout = "~/Views/Shared/_LayoutSinhVien.cshtml";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table" border="1" style="border-collapse: collapse">
     <thead >
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MaSv)
+                Mã số sinh viên
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Pass)
+                Tên sinh viên
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TenSv)
+                Năm
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nam)
+                file ảnh
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HinhSv)
+                Giới tính
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Gioitinh)
+                CMND
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cmnd)
+                Địa chỉ
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Diachi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaKhoaNavigation)
+                Khoa
             </th>
             <th></th>
         </tr>
@@ -48,9 +40,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.MaSv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pass)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TenSv)
@@ -71,11 +60,7 @@
                 @Html.DisplayFor(modelItem => item.Diachi)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MaKhoaNavigation.MaKhoa)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                @Html.DisplayFor(modelItem => item.MaKhoaNavigation.TenKhoa)
             </td>
         </tr>
 }

@@ -1,0 +1,43 @@
+﻿@model ProjectNhom12.Models.Hocphan
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutSinhVien.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Hocphan</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Hocky)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Hocky)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nam)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nam)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Giangvien)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Giangvien)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MaMhNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaMhNavigation.MaMh)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.MaHp">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

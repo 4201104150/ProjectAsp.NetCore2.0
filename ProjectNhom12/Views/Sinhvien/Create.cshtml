@@ -10,56 +10,56 @@
 <h4>Sinhvien</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" >
+    <div class="col-md-4" style="margin-top: 80px;margin-left: 80px;margin-bottom: 150px;border-style: groove;width: 500px;height: 400px;text-align:left">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group" style="font-size: 15px;line-height:50px; margin-left:40px">
                 <label asp-for="MaSv" class="control-label"></label>
                 <input asp-for="MaSv" class="form-control" />
                 <span asp-validation-for="MaSv" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="margin-left:40px">
                 <label asp-for="Pass" class="control-label"></label>
                 <input asp-for="Pass" class="form-control" />
                 <span asp-validation-for="Pass" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="font-size: 15px;line-height:50px;margin-left:40px">
                 <label asp-for="TenSv" class="control-label"></label>
                 <input asp-for="TenSv" class="form-control" />
                 <span asp-validation-for="TenSv" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="margin-left:40px">
                 <label asp-for="Nam" class="control-label"></label>
                 <input asp-for="Nam" class="form-control" />
                 <span asp-validation-for="Nam" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="font-size: 15px;line-height:50px;margin-left:40px">
                 <label asp-for="MaKhoa" class="control-label"></label>
-                <select asp-for="MaKhoa" class ="form-control" asp-items="ViewBag.MaKhoa"></select>
+                <select asp-for="MaKhoa" class="form-control" asp-items="ViewBag.MaKhoa"></select>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="margin-left:40px">
                 <label asp-for="HinhSv" class="control-label"></label>
                 <input asp-for="HinhSv" type="file" class="form-control" />
                 <span asp-validation-for="HinhSv" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="font-size: 15px;line-height:50px;margin-left:40px">
                 <label asp-for="Gioitinh" class="control-label"></label>
-                <input asp-for="Gioitinh" type="radio" class="form-control" value="Nam"/>Nam
-                <input asp-for="Gioitinh" type="radio" class="form-control" value="Nữ"/>Nữ
+                <input asp-for="Gioitinh" type="radio" class="form-control" value="Nam" />Nam
+                <input asp-for="Gioitinh" type="radio" class="form-control" value="Nữ" />Nữ
                 <span asp-validation-for="Gioitinh" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="margin-left:40px">
                 <label asp-for="Cmnd" class="control-label"></label>
                 <input asp-for="Cmnd" class="form-control" />
                 <span asp-validation-for="Cmnd" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="font-size: 15px;line-height:50px;margin-left:40px">
                 <label asp-for="Diachi" class="control-label"></label>
                 <input asp-for="Diachi" class="form-control" />
                 <span asp-validation-for="Diachi" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                
+            <div class="form-group" style="font-size: 15px;line-height:50px;margin-left:40px">
+
                 <input type="submit" value="Create" class="btn btn-primary" />
 
             </div>

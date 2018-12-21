@@ -5,12 +5,8 @@
     Layout = "~/Views/Shared/_LayoutSinhVien.cshtml";
 }
 
-<h1>Details</h1>
-
 <div>
-    <h4>Sinhvien</h4>
-    <hr />
-    <h3>@Model.TenSv</h3>
+    <h3>@Model.TenSv-[@Model.MaSv]</h3>
     <div class="col-md-3 text-center">
         <img src="~/HinhSV/@Model.HinhSv"  height="300" width="300"/><br />
         </div>
@@ -83,6 +79,5 @@
         </table>
     </div>
     <div>
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Cập nhật thông tin của bạn</a>
     </div>

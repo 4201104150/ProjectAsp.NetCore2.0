@@ -30,6 +30,7 @@ namespace ProjectNhom12.Controllers
         // GET: Sinhvien/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            id = HomeController.ID;
             if (id == null)
             {
                 return NotFound();
@@ -84,7 +85,7 @@ namespace ProjectNhom12.Controllers
             {
                 return NotFound();
             }
-            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa", sinhvien.MaKhoa);
+            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "TenKhoa", sinhvien.MaKhoa);
             return View(sinhvien);
         }
 
@@ -121,7 +122,7 @@ namespace ProjectNhom12.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa", sinhvien.MaKhoa);
+            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "TenKhoa", sinhvien.MaKhoa);
             return View(sinhvien);
         }
 
@@ -170,6 +171,9 @@ namespace ProjectNhom12.Controllers
 
             return View();
         }
-        
+        public IActionResult lala()
+        {
+            return View("lala");
+        }
     }
 }
