@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+<<<<<<< HEAD
 using Microsoft.AspNetCore.Http;
+=======
+>>>>>>> 38ca4eab03a75eec02ba7a755982e2863c8da66b
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -156,6 +159,9 @@ namespace ProjectNhom12.Controllers
         {
             return _context.NhanVien.Any(e => e.Id == id);
         }
+<<<<<<< HEAD
         
+=======
+>>>>>>> 38ca4eab03a75eec02ba7a755982e2863c8da66b
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -65,7 +67,7 @@ namespace ProjectNhom12.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa", sinhvien.MaKhoa);
-            return View(sinhvien);
+            return RedirectToAction("UploadFile");
         }
 
         // GET: Sinhvien/Edit/5
@@ -155,15 +157,16 @@ namespace ProjectNhom12.Controllers
         {
             return _context.Sinhvien.Any(e => e.Id == id);
         }
-        public IActionResult Login()
-        {
-            return View();
-        }
-
         [HttpPost]
-        public IActionResult Login(LoginViewModel model)
+        public async Task<IActionResult> UploadFile(IFormFile file)
         {
+            if (file == null || file.Length == 0) return Content("file not selected");
 
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "HinhSV", file.FileName);
+
+            using (var stream = new FileStream(path, FileMode.Create)) { await file.CopyToAsync(stream); }
+
+<<<<<<< HEAD
             if (ModelState.IsValid)
             {
                 Sinhvien sv = _context.Sinhvien.SingleOrDefault(p => p.MaSv == model.Tendn && p.Pass == model.Matkhau);
@@ -185,6 +188,8 @@ namespace ProjectNhom12.Controllers
                     }
                 }
             }
+=======
+>>>>>>> 38ca4eab03a75eec02ba7a755982e2863c8da66b
             return View();
         }
         public ActionResult Search(string Name = "")
