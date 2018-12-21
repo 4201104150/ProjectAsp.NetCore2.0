@@ -4,14 +4,6 @@ go
 use QLSinhvien_NET
 go
 
-create table Dangnhap
-(
-	username varchar(10) primary key,
-	matkhau varchar(20) not null,
-	loai int not null,
-	constraint fk_sinhvien_dangnhap foreign key  (username) references Sinhvien(MaSv),
-	constraint fk_nhanvien_dangnhap foreign key (username) references NhanVien(MaNv)
-)
 create table Khoa
 (
 	MaKhoa varchar(10) constraint pk_khoa primary key,
@@ -23,7 +15,9 @@ go
 
 create table Sinhvien
 (
-	MaSv varchar(10),
+	id int identity(1,1),
+	MaSv varchar(10) unique not null,
+	Pass nvarchar(max) not null,
 	TenSv nvarchar(100) not null,
 	Nam int check (nam>=1 and nam<=8),
 	MaKhoa varchar(10),
@@ -31,7 +25,7 @@ create table Sinhvien
 	Gioitinh nvarchar(4) check(Gioitinh = N'Nam' or Gioitinh = N'Nữ'),
 	CMND nvarchar(20),
 	Diachi nvarchar(255),
-	constraint pk_sinhvien primary key (MaSv),
+	constraint pk_sinhvien primary key (id),
 	constraint fk_sinhvien_k foreign key (MaKhoa) references Khoa(MaKhoa)
 )
 go
@@ -57,11 +51,11 @@ create table Hocphan
 go
 create table Ketqua
 (
-	MaSv varchar(10),
+	MaSvc varchar(10),
 	MaHp varchar(10),
 	Diem int check (Diem >=0 and Diem <=10),
-	constraint pk_Ketqua primary key(MaSv,MaHp),
-	constraint fk_Ketqua_SV foreign key (MaSv) references Sinhvien(MaSv),
+	constraint pk_Ketqua primary key(MaSvc,MaHp),
+	constraint fk_Ketqua_SV foreign key (MaSvc) references Sinhvien(MaSv),
 	constraint fk_Ketqua_HP foreign key (MaHp) references HocPhan (MaHp),
 )
 go
@@ -77,7 +71,9 @@ create table Dieukien
 go
 create table NhanVien 
 (
-	MaNv varchar(10),
+	id int identity(1,1),
+	MaNv varchar(10) unique not null,
+	Pass varchar(max) not null,
 	TenNv nvarchar(100) not null,
 	Ngayvaolam datetime,
 	MaKhoa varchar(10),
@@ -85,6 +81,6 @@ create table NhanVien
 	Gioitinh nvarchar(4) check(Gioitinh = N'Nam' or Gioitinh = N'Nữ'),
 	CMND nvarchar(20),
 	Diachi nvarchar(255),
-	constraint pk_nhanvien primary key (MaNv),
+	constraint pk_nhanvien primary key (id),
 	constraint fk_nhanvien_k foreign key (MaKhoa) references Khoa(MaKhoa)
 )
