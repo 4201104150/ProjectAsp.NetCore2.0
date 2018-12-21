@@ -168,41 +168,8 @@ namespace ProjectNhom12.Controllers
 
             using (var stream = new FileStream(path, FileMode.Create)) { await file.CopyToAsync(stream); }
 
-<<<<<<< HEAD
-            if (ModelState.IsValid)
-            {
-                Sinhvien sv = _context.Sinhvien.SingleOrDefault(p => p.MaSv == model.Tendn && p.Pass == model.Matkhau);
-
-                if (sv == null)
-                {
-                    ModelState.AddModelError("Loi", "Không có người này.");
-                    return View();
-                }
-                else
-                {
-                    if (model.DoiTuong == "Sinh Viên")
-                    {
-                        //ghi session
-                        //HttpContext.Session.SetString("MaKH", kh.MaKh);
-                        HttpContext.Session.Set("MaSv", sv);
-                        //chuyển tới trang HangHoa (--> MyProfile)
-                        return RedirectToAction("Index", "Home");
-                    }
-                }
-            }
-=======
->>>>>>> 38ca4eab03a75eec02ba7a755982e2863c8da66b
             return View();
         }
-<<<<<<< HEAD
         
-=======
-        public ActionResult Search(string Name = "")
-        {
-            var list = _context.Sinhvien
-            .Where(p => p.MaSv.Contains(Name)).ToList();
-            return View(list);
-        }
->>>>>>> 150011d3a0661c90707c75a6a16dffe0e698f178
     }
 }
