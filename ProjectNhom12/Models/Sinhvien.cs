@@ -21,6 +21,22 @@ namespace ProjectNhom12.Models
         public string Cmnd { get; set; }
         public string Diachi { get; set; }
 
+        public Sinhvien(int id, string maSv, string pass, string tenSv, int? nam, string maKhoa, string hinhSv, string gioitinh, string cmnd, string diachi, Khoa maKhoaNavigation, ICollection<Ketqua> ketqua)
+        {
+            Id = id;
+            MaSv = maSv;
+            Pass = pass;
+            TenSv = tenSv;
+            Nam = nam;
+            MaKhoa = maKhoa;
+            HinhSv = hinhSv;
+            Gioitinh = gioitinh;
+            Cmnd = cmnd;
+            Diachi = diachi;
+            MaKhoaNavigation = maKhoaNavigation;
+            Ketqua = ketqua;
+        }
+
         public virtual Khoa MaKhoaNavigation { get; set; }
         public virtual ICollection<Ketqua> Ketqua { get; set; }
     }
