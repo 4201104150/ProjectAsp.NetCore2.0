@@ -10,62 +10,74 @@
 <div>
     <h4>Sinhvien</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaSv)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaSv)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Pass)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Pass)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TenSv)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TenSv)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nam)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nam)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HinhSv)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HinhSv)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Gioitinh)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Gioitinh)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cmnd)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cmnd)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Diachi)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Diachi)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaKhoaNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaKhoaNavigation.MaKhoa)
-        </dd>
-    </dl>
+    <table border="1" align="center" style="border-collapse: collapse;">
+        <thead class="row">
+            <tr>
+              </tr>
+            <tr>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MaSv)
+                </th>
+
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Pass)
+                </th>
+
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.TenSv)
+                </th>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Nam)
+                </th>
+                
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Gioitinh)
+                </th>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Cmnd)
+                </th>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Diachi)
+                </th>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MaKhoaNavigation)
+                </th>
+            </tr>
+            <tr>
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.MaSv)
+                </td>
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.Pass)
+                </td>
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.TenSv)
+                </td>
+                
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.Nam)
+                </td>
+                
+                
+                
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.Gioitinh)
+                </td>
+                
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.Cmnd)
+                </td>
+                
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.Diachi)
+                </td>
+                
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.MaKhoaNavigation.MaKhoa)
+                </td>
+            </tr>
+        </thead>
+    </table>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
