@@ -167,6 +167,7 @@ namespace ProjectNhom12.Controllers
             if (ModelState.IsValid)
             {
                 Sinhvien sv = _context.Sinhvien.SingleOrDefault(p => p.MaSv == model.Tendn && p.Pass == model.Matkhau);
+
                 if (sv == null)
                 {
                     ModelState.AddModelError("Loi", "Không có người này.");
@@ -185,6 +186,12 @@ namespace ProjectNhom12.Controllers
                 }
             }
             return View();
+        }
+        public ActionResult Search(string Name = "")
+        {
+            var list = _context.Sinhvien
+            .Where(p => p.MaSv.Contains(Name)).ToList();
+            return View(list);
         }
     }
 }
