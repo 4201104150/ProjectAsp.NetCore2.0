@@ -15,7 +15,6 @@ namespace ProjectNhom12.Models
         {
         }
 
-        public virtual DbSet<Dangnhap> Dangnhap { get; set; }
         public virtual DbSet<Dieukien> Dieukien { get; set; }
         public virtual DbSet<Hocphan> Hocphan { get; set; }
         public virtual DbSet<Ketqua> Ketqua { get; set; }
@@ -36,38 +35,6 @@ namespace ProjectNhom12.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
-
-            modelBuilder.Entity<Dangnhap>(entity =>
-            {
-                entity.HasKey(e => e.Username)
-                    .HasName("PK__Dangnhap__F3DBC5734E803E25");
-
-                entity.Property(e => e.Username)
-                    .HasColumnName("username")
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
-                    .ValueGeneratedNever();
-
-                entity.Property(e => e.Loai).HasColumnName("loai");
-
-                entity.Property(e => e.Matkhau)
-                    .IsRequired()
-                    .HasColumnName("matkhau")
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.UsernameNavigation)
-                    .WithOne(p => p.Dangnhap)
-                    .HasForeignKey<Dangnhap>(d => d.Username)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_nhanvien_dangnhap");
-
-                entity.HasOne(d => d.Username1)
-                    .WithOne(p => p.Dangnhap)
-                    .HasForeignKey<Dangnhap>(d => d.Username)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_sinhvien_dangnhap");
-            });
 
             modelBuilder.Entity<Dieukien>(entity =>
             {
@@ -120,10 +87,10 @@ namespace ProjectNhom12.Models
 
             modelBuilder.Entity<Ketqua>(entity =>
             {
-                entity.HasKey(e => new { e.MaSv, e.MaHp })
+                entity.HasKey(e => new { e.MaSvc, e.MaHp })
                     .HasName("pk_Ketqua");
 
-                entity.Property(e => e.MaSv)
+                entity.Property(e => e.MaSvc)
                     .HasMaxLength(10)
                     .IsUnicode(false);
 
@@ -137,9 +104,10 @@ namespace ProjectNhom12.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Ketqua_HP");
 
-                entity.HasOne(d => d.MaSvNavigation)
+                entity.HasOne(d => d.MaSvcNavigation)
                     .WithMany(p => p.Ketqua)
-                    .HasForeignKey(d => d.MaSv)
+                    .HasPrincipalKey(p => p.MaSv)
+                    .HasForeignKey(d => d.MaSvc)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Ketqua_SV");
             });
@@ -150,7 +118,7 @@ namespace ProjectNhom12.Models
                     .HasName("pk_khoa");
 
                 entity.HasIndex(e => e.TenKhoa)
-                    .HasName("UQ__Khoa__AAD36158052E8A40")
+                    .HasName("UQ__Khoa__AAD36158353AC6BA")
                     .IsUnique();
 
                 entity.Property(e => e.MaKhoa)
@@ -189,13 +157,11 @@ namespace ProjectNhom12.Models
 
             modelBuilder.Entity<NhanVien>(entity =>
             {
-                entity.HasKey(e => e.MaNv)
-                    .HasName("pk_nhanvien");
+                entity.HasIndex(e => e.MaNv)
+                    .HasName("UQ__NhanVien__2725D76B141AED52")
+                    .IsUnique();
 
-                entity.Property(e => e.MaNv)
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Cmnd)
                     .HasColumnName("CMND")
@@ -213,7 +179,16 @@ namespace ProjectNhom12.Models
                     .HasMaxLength(10)
                     .IsUnicode(false);
 
+                entity.Property(e => e.MaNv)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Ngayvaolam).HasColumnType("datetime");
+
+                entity.Property(e => e.Pass)
+                    .IsRequired()
+                    .IsUnicode(false);
 
                 entity.Property(e => e.TenNv)
                     .IsRequired()
@@ -227,13 +202,11 @@ namespace ProjectNhom12.Models
 
             modelBuilder.Entity<Sinhvien>(entity =>
             {
-                entity.HasKey(e => e.MaSv)
-                    .HasName("pk_sinhvien");
+                entity.HasIndex(e => e.MaSv)
+                    .HasName("UQ__Sinhvien__2725087B5E65247A")
+                    .IsUnique();
 
-                entity.Property(e => e.MaSv)
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Cmnd)
                     .HasColumnName("CMND")
@@ -250,6 +223,13 @@ namespace ProjectNhom12.Models
                 entity.Property(e => e.MaKhoa)
                     .HasMaxLength(10)
                     .IsUnicode(false);
+
+                entity.Property(e => e.MaSv)
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Pass).IsRequired();
 
                 entity.Property(e => e.TenSv)
                     .IsRequired()

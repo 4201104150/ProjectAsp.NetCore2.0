@@ -10,7 +10,9 @@ namespace ProjectNhom12.Models
             Ketqua = new HashSet<Ketqua>();
         }
 
+        public int Id { get; set; }
         public string MaSv { get; set; }
+        public string Pass { get; set; }
         public string TenSv { get; set; }
         public int? Nam { get; set; }
         public string MaKhoa { get; set; }
@@ -20,7 +22,6 @@ namespace ProjectNhom12.Models
         public string Diachi { get; set; }
 
         public virtual Khoa MaKhoaNavigation { get; set; }
-        public virtual Dangnhap Dangnhap { get; set; }
         public virtual ICollection<Ketqua> Ketqua { get; set; }
     }
 }
