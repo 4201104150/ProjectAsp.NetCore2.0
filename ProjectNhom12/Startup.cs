@@ -25,6 +25,10 @@ namespace ProjectNhom12
         {
             services.AddDbContext<QLSinhvien_NETContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("df")));
             services.AddMvc();
+            services.AddSession(option =>
+            {
+                option.IdleTimeout = TimeSpan.FromMinutes(5);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +45,7 @@ namespace ProjectNhom12
             }
 
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
