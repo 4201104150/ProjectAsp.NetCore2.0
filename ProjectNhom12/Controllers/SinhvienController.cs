@@ -157,7 +157,6 @@ namespace ProjectNhom12.Controllers
         {
             return _context.Sinhvien.Any(e => e.Id == id);
         }
-<<<<<<< HEAD
         [HttpPost]
         public async Task<IActionResult> UploadFile(IFormFile file)
         {
@@ -167,37 +166,6 @@ namespace ProjectNhom12.Controllers
 
             using (var stream = new FileStream(path, FileMode.Create)) { await file.CopyToAsync(stream); }
 
-=======
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Login(LoginViewModel model)
-        {
-
-            if (ModelState.IsValid)
-            {
-                Sinhvien sv = _context.Sinhvien.SingleOrDefault(p => p.MaSv == model.Tendn && p.Pass == model.Matkhau);
-                if (sv == null)
-                {
-                    ModelState.AddModelError("Loi", "Không có người này.");
-                    return View();
-                }
-                else
-                {
-                    if (model.DoiTuong == "Sinh Viên")
-                    {
-                        //ghi session
-                        //HttpContext.Session.SetString("MaKH", kh.MaKh);
-                        HttpContext.Session.Set("MaSv", sv);
-                        //chuyển tới trang HangHoa (--> MyProfile)
-                        return RedirectToAction("Index", "Home");
-                    }
-                }
-            }
->>>>>>> origin/master
             return View();
         }
     }
