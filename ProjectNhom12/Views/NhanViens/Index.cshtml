@@ -1,0 +1,73 @@
+﻿@model IEnumerable<ProjectNhom12.Models.NhanVien>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutSinhVien.cshtml";
+}
+
+<h1>Index</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Mã nhan viên
+            </th>
+            <th>
+                Tên nhân viên
+            </th>
+            <th>
+                Năm
+            </th>
+            <th>
+                Pass
+            </th>
+            <th>
+                Giới tính
+            </th>
+            <th>
+                CMND
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th>
+                Khoa
+            </th>
+            <th></th>
+        </tr>
+        
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngayvaolam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gioitinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cmnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diachi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaKhoaNavigation.MaKhoa)
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>

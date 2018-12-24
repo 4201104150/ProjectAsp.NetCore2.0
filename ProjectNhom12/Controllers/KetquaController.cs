@@ -21,13 +21,15 @@ namespace ProjectNhom12.Controllers
         // GET: Ketqua
         public async Task<IActionResult> Index()
         {
-            var qLSinhvien_NETContext = _context.Ketqua.Include(k => k.MaHpNavigation).Include(k => k.MaSvcNavigation);
+            var qLSinhvien_NETContext = _context.Ketqua.Include(k => k.MaHpNavigation)
+                .Include(k => k.MaSvcNavigation);
             return View(await qLSinhvien_NETContext.ToListAsync());
         }
 
         // GET: Ketqua/Details/5
         public async Task<IActionResult> Details(string id)
         {
+            id = HomeController.ma;
             if (id == null)
             {
                 return NotFound();

@@ -13,6 +13,7 @@ namespace ProjectNhom12.Controllers
         private readonly QLSinhvien_NETContext _context;
         public static int ID;
         public static string makhoa;
+        public static string ma;
         public HomeController(QLSinhvien_NETContext context)
         {
             _context = context;
@@ -55,26 +56,43 @@ namespace ProjectNhom12.Controllers
 
             if (ModelState.IsValid)
             {
-                Sinhvien sv = _context.Sinhvien.SingleOrDefault(p => p.MaSv == model.Tendn && p.Pass == model.Matkhau);
                 string s = _context.Sinhvien.Where(p => p.MaSv == model.Tendn && p.Pass == model.Matkhau).Select(P => P.MaSv).ToString();
-                ID = sv.Id;
-                int IDD = sv.Id;
-                ViewBag.ID = IDD;
-                makhoa = sv.MaKhoa;
-                if (sv == null)
-                {
-                    ModelState.AddModelError("Loi", "Không có người này.");
-                    return View();
-                }
-                else
+                //string n = _context.NhanVien.Where(p => p.MaNv == model.Tendn && p.Pass == model.Matkhau).Select(P => P.MaNv).ToString();
+                
+                
+                //if (sv == null || nv == null)
+                //{
+                //    ModelState.AddModelError("Loi", "Không có người này.");
+                //    return View();
+                //}
+                //else
                 {
                     if (model.DoiTuong == "Sinh Viên")
                     {
+                        Sinhvien sv = _context.Sinhvien.SingleOrDefault(p => p.MaSv == model.Tendn && p.Pass == model.Matkhau);
+                        ID = sv.Id;
+                        int IDD = sv.Id;
+                        ViewBag.ID = IDD;
+                        makhoa = sv.MaKhoa;
+                        ma = sv.MaSv;
                         //ghi session
                         //HttpContext.Session.SetString("MaKH", kh.MaKh);
                         HttpContext.Session.Set("MaSv", sv);
                         //chuyển tới trang HangHoa (--> MyProfile)
                         return RedirectToAction("Details", "Sinhvien");
+                    }
+                    else
+                    {
+                        NhanVien nv = _context.NhanVien.SingleOrDefault(p => p.MaNv == model.Tendn && p.Pass == model.Matkhau);
+                        ID = nv.Id;
+                        int IDD = nv.Id;
+                        ViewBag.ID = IDD;
+                        makhoa = nv.MaKhoa;
+                        //ghi session
+                        //HttpContext.Session.SetString("MaKH", kh.MaKh);
+                        HttpContext.Session.Set("MaNv", nv);
+                        //chuyển tới trang HangHoa (--> MyProfile)
+                        return RedirectToAction("Details", "NhanViens");
                     }
                 }
             }

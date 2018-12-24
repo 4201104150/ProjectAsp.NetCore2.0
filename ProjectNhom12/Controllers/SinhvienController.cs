@@ -31,6 +31,7 @@ namespace ProjectNhom12.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             id = HomeController.ID;
+            
             if (id == null)
             {
                 return NotFound();

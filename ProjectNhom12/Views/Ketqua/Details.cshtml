@@ -10,28 +10,34 @@
 <div>
     <h4>Ketqua</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Diem)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Diem)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaHpNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaHpNavigation.MaHp)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaSvcNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaSvcNavigation.MaSv)
-        </dd>
-    </dl>
+    <table class="table" border="1" style="border-collapse: collapse">
+        <tr col-span="4">
+            <th>Masv</th>
+            <th>Mahp</th>
+            <th>Diem</th>
+            <th>KetQua</th>
+        </tr>
+        <tr col-span="4">
+            <td>@Html.DisplayFor(model => model.MaSvcNavigation.MaSv)</td>
+            <td>@Html.DisplayFor(model => model.MaHpNavigation.MaHp)</td>
+            <td>@Html.DisplayFor(model => model.Diem)</td>
+            <td>
+                @{
+                    if (Model.Diem >= 5)
+                    {
+                        <img src="~/Mr.T_Hinh/true.jpg">
+                    }
+                    else
+                    {
+                        <img src="~/Mr.T_Hinh/false.jpg" />
+                    }
+                        }
+                    </td>
+        </tr>
+    </table>
+    
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+    
+    <a asp-action="Details" asp-controller="Sinhvien">Back to List</a>
 </div>

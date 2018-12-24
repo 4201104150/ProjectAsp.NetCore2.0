@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,25 +9,26 @@ using ProjectNhom12.Models;
 
 namespace ProjectNhom12.Controllers
 {
-    public class NhanVienController : Controller
+    public class NhanViensController : Controller
     {
         private readonly QLSinhvien_NETContext _context;
 
-        public NhanVienController(QLSinhvien_NETContext context)
+        public NhanViensController(QLSinhvien_NETContext context)
         {
             _context = context;
         }
 
-        // GET: NhanVien
+        // GET: NhanViens
         public async Task<IActionResult> Index()
         {
             var qLSinhvien_NETContext = _context.NhanVien.Include(n => n.MaKhoaNavigation);
             return View(await qLSinhvien_NETContext.ToListAsync());
         }
 
-        // GET: NhanVien/Details/5
+        // GET: NhanViens/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            id = HomeController.ID;
             if (id == null)
             {
                 return NotFound();
@@ -45,14 +45,14 @@ namespace ProjectNhom12.Controllers
             return View(nhanVien);
         }
 
-        // GET: NhanVien/Create
+        // GET: NhanViens/Create
         public IActionResult Create()
         {
             ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa");
             return View();
         }
 
-        // POST: NhanVien/Create
+        // POST: NhanViens/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -69,9 +69,10 @@ namespace ProjectNhom12.Controllers
             return View(nhanVien);
         }
 
-        // GET: NhanVien/Edit/5
+        // GET: NhanViens/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            id = HomeController.ID;
             if (id == null)
             {
                 return NotFound();
@@ -86,7 +87,7 @@ namespace ProjectNhom12.Controllers
             return View(nhanVien);
         }
 
-        // POST: NhanVien/Edit/5
+        // POST: NhanViens/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -122,7 +123,7 @@ namespace ProjectNhom12.Controllers
             return View(nhanVien);
         }
 
-        // GET: NhanVien/Delete/5
+        // GET: NhanViens/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -141,7 +142,7 @@ namespace ProjectNhom12.Controllers
             return View(nhanVien);
         }
 
-        // POST: NhanVien/Delete/5
+        // POST: NhanViens/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -155,6 +156,17 @@ namespace ProjectNhom12.Controllers
         private bool NhanVienExists(int id)
         {
             return _context.NhanVien.Any(e => e.Id == id);
+        }
+
+        public static int id;
+        public IActionResult dssv()
+        {
+            
+            QLSinhvien_NETContext db = new QLSinhvien_NETContext();
+            var dssv = db.Sinhvien
+                .Where(p => p.MaKhoa == HomeController.makhoa)
+                .ToList();
+            return View(dssv);
         }
     }
 }

@@ -1,10 +1,11 @@
-﻿@model IEnumerable<ProjectNhom12.Models.NhanVien>
+﻿@model IEnumerable<ProjectNhom12.Models.Sinhvien>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "dssv";
+    Layout = "~/Views/Shared/_LayoutSinhVien.cshtml";
 }
 
-<h1>Index</h1>
+<h1>dssv</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,19 +14,17 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MaNv)
+                @Html.DisplayNameFor(model => model.MaSv)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.TenSv)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Pass)
+                @Html.DisplayNameFor(model => model.Nam)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TenNv)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ngayvaolam)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HinhNv)
+                @Html.DisplayNameFor(model => model.HinhSv)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Gioitinh)
@@ -46,19 +45,17 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.MaNv)
+                @Html.DisplayFor(modelItem => item.MaSv)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSv)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Pass)
+                @Html.DisplayFor(modelItem => item.Nam)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TenNv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ngayvaolam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HinhNv)
+                @Html.DisplayFor(modelItem => item.HinhSv)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Gioitinh)
@@ -74,8 +71,8 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Details" asp-controller="Sinhvien" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-controller="Sinhvien" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }
