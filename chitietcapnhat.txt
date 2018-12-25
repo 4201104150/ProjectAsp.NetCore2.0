@@ -1,0 +1,2 @@
+﻿Cập nhật thêm chức năng của nhân viên QL khoa
+QL điểm,QLSV,QL Môn học, QL lớp HP
