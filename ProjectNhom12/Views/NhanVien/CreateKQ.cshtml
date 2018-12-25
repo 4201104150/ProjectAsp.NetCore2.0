@@ -7,23 +7,23 @@
 <h4>Ketqua</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4" style="margin-top: 80px;margin-left: 80px;margin-bottom: 150px;border-style: groove;width: 500px;height: 400px;text-align:left">
         <form asp-action="CreateKQ">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group"style="font-size: 15px;line-height:50px; margin-left:40px">
                 <label asp-for="MaSvc" class="control-label"></label>
                 <select asp-for="MaSvc" class ="form-control" asp-items="ViewBag.MaSvc"></select>
             </div>
-            <div class="form-group">
+            <div class="form-group"style="margin-left:40px">
                 <label asp-for="MaHp" class="control-label"></label>
                 <select asp-for="MaHp" class ="form-control" asp-items="ViewBag.MaHp"></select>
             </div>
-            <div class="form-group">
+            <div class="form-group"style="font-size: 15px;line-height:50px; margin-left:40px">
                 <label asp-for="Diem" class="control-label"></label>
                 <input asp-for="Diem" class="form-control" />
                 <span asp-validation-for="Diem" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group"style="margin-left:40px">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
