@@ -1,0 +1,40 @@
+﻿@model ProjectNhom12.Models.Monhoc
+
+@{
+    ViewData["Title"] = "DeleteMH";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
+
+<h1>Xóa môn học</h1>
+
+<h3>Bạn có chắc là xóa môn học này chứ ???</h3>
+<div>
+    <h4>Monhoc</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TenMh)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TenMh)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tinchi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tinchi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MaKhoaNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaKhoaNavigation.MaKhoa)
+        </dd class>
+    </dl>
+    
+    <form asp-action="DeleteMH">
+        <input type="hidden" asp-for="MaMh" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="dsMon">Trở về</a>
+    </form>
+</div>

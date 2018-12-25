@@ -16,6 +16,7 @@
             vertical-align: central;
             background-color: aliceblue;
         }
+
         .example {
             position: relative;
             width: 917px;
@@ -212,6 +213,7 @@
         .menu li:hover div.subs, .menu li a:hover div.subs {
             width: 100%;
         }
+
         td.title {
             font-family: tahoma, verdana;
             font-weight: bold;
@@ -219,6 +221,7 @@
             COLOR: #00649D;
             TEXT-DECORATION: none;
         }
+
         a.menumain:link {
             font-family: tahoma, verdana;
             font-weight: bold;
@@ -226,11 +229,8 @@
             COLOR: #00649D;
             TEXT-DECORATION: none;
         }
-        
-
-
     </style>
-    <title>Sinh viên</title>
+    <title>Nhân viên</title>
 </head>
 <body>
     <tr>
@@ -269,7 +269,7 @@
                         </dl>
                     </div>
                 </li>
-                
+
                 <li><a href="https://www.facebook.com/profile.php?id=100008438494424" class="green">Other</a></li>
                 <li><a class="blue">About</a></li>
             </ul>
@@ -351,7 +351,7 @@
                                                                                                                                                     </p>
                                                                                                                                                 </td>
                                                                                                                                                 <td>
-                                                                                                                                                    <a asp-action="lala" asp-controller="Sinhvien">Trang của bạn</a>
+                                                                                                                                                    <a asp-action="Luong" asp-controller="NhanVien">Trang của bạn</a>
                                                                                                                                                     <a id="ContentPlaceHolder1_ctl00_ctl00_lnkHome" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkHome','')"></a>
                                                                                                                                                 </td>
                                                                                                                                             </tr>
@@ -363,7 +363,7 @@
                                                                                                                     </table>
                                                                                                                 </td>
                                                                                                             </tr>
-                                                                                                            
+
                                                                                                             <tr>
                                                                                                                 <td height="20">
                                                                                                                     <table id="table179" width="96%" cellspacing="0" cellpadding="0" border="0">
@@ -379,7 +379,7 @@
                                                                                                                                                     </p>
                                                                                                                                                 </td>
                                                                                                                                                 <td class="title">
-                                                                                                                                                    <a asp-controller="Sinhvien" asp-action="Details">Thông tin cá nhân</a>
+                                                                                                                                                    <a asp-controller="NhanVien" asp-action="Details">Thông tin cá nhân</a>
                                                                                                                                                     <a id="ContentPlaceHolder1_ctl00_ctl00_lnkInfo" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkInfo','')"></a>
                                                                                                                                                 </td>
                                                                                                                                             </tr>
@@ -391,23 +391,52 @@
                                                                                                                     </table>
                                                                                                                 </td>
                                                                                                             </tr>
+
                                                                                                             <tr>
                                                                                                                 <td height="20">
-                                                                                                                    <table id="table180" width="96%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                    <table id="table17" width="96%" cellspacing="0" cellpadding="0" border="0" align="center">
                                                                                                                         <tbody>
                                                                                                                             <tr>
                                                                                                                                 <td class="contentnews1" height="20" align="left">
-                                                                                                                                    <table id="table27" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                    <table id="table26" width="100%" cellspacing="0" cellpadding="0" border="0">
                                                                                                                                         <tbody>
                                                                                                                                             <tr>
                                                                                                                                                 <td width="40">
                                                                                                                                                     <p align="center">
-                                                                                                                                                        <img src="~/Mr.T_Hinh/text_page.png" width="24" height="24">
+                                                                                                                                                        <img src="~/Mr.T_Hinh/find.png" width="24" height="24">
                                                                                                                                                     </p>
                                                                                                                                                 </td>
                                                                                                                                                 <td class="title">
-                                                                                                                                                    <a asp-action="dsMon" asp-controller="Monhocs">Danh sách môn đã học</a>
-                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lnkStudyProgram" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkStudyProgram','')"></a>
+                                                                                                                                                    <a asp-action="Index" asp-controller="Ketqua">Quản lý điểm</a>
+                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lnkDiem" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkDiem','')"></a>
+                                                                                                                                                </td>
+                                                                                                                                            </tr>
+                                                                                                                                        </tbody>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </tbody>
+                                                                                                                    </table>
+                                                                                                                </td>
+                                                                                                            </tr>
+
+                                                                                                            <tr>
+                                                                                                                <td height="20">
+                                                                                                                    <table id="table17" width="96%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                                                                                                        <tbody>
+                                                                                                                            <tr>
+                                                                                                                                <td class="contentnews1" height="20" align="left">
+                                                                                                                                    <table id="table26" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                                                        <tbody>
+                                                                                                                                            <tr>
+                                                                                                                                                <td width="40">
+                                                                                                                                                    <p align="center">
+                                                                                                                                                        <img src="~/Mr.T_Hinh/find.png" width="24" height="24">
+                                                                                                                                                    </p>
+                                                                                                                                                </td>
+                                                                                                                                                <td class="title">
+                                                                                                                                                    <a asp-action="QLSV" asp-controller="NhanVien">Quản lý sinh viên</a>
+                                                                                                                                                    <a id="ContentPlaceHolder1_ctl00_ctl00_lnkDiem" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkDiem','')"></a>
                                                                                                                                                 </td>
                                                                                                                                             </tr>
                                                                                                                                         </tbody>
@@ -433,7 +462,7 @@
                                                                                                                                                     </p>
                                                                                                                                                 </td>
                                                                                                                                                 <td class="title">
-                                                                                                                                                    <a asp-action="Details" asp-controller="Ketqua">Xem điểm</a>
+                                                                                                                                                    <a asp-action="Index" asp-controller="MonHoc">Quản lý môn học</a>
                                                                                                                                                     <a id="ContentPlaceHolder1_ctl00_ctl00_lnkDiem" class="menumain" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$lnkDiem','')"></a>
                                                                                                                                                 </td>
                                                                                                                                             </tr>

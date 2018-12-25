@@ -1,0 +1,70 @@
+﻿@model ProjectNhom12.Models.NhanVien
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
+
+<div>
+    <h4>@Model.TenNv-[MNV:@Model.MaNv]</h4>
+    <hr />
+    <div class="col-md-3 text-center">
+        <img src="~/HinhSV/@Model.HinhNv" height="300" width="300" /><br />
+    </div>
+    <table border="1" align="center" style="border-collapse: collapse;">
+        <thead class="row">
+            <tr></tr>
+            <tr>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MaNv)
+                </th>
+                
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.TenNv)
+                </th>
+                
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Ngayvaolam)
+                </th>
+                
+
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Gioitinh)
+                </th>
+                
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Cmnd)
+                </th>
+                
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Diachi)
+                </th>
+                
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MaKhoaNavigation)
+                </th>
+                
+            </tr>
+            <tr><th class="col-sm-2">
+    @Html.DisplayFor(model => model.MaNv)
+</th><th class="col-sm-2">
+    @Html.DisplayFor(model => model.TenNv)
+</th><th class="col-sm-2">
+    @Html.DisplayFor(model => model.Ngayvaolam)
+</th><th class="col-sm-2">
+    @Html.DisplayFor(model => model.Gioitinh)
+</th><th class="col-sm-2">
+    @Html.DisplayFor(model => model.Cmnd)
+</th><th class="col-sm-2">
+    @Html.DisplayFor(model => model.Diachi)
+</th>
+                <th class="col-sm-2">
+                    @Html.DisplayFor(model => model.MaKhoaNavigation.MaKhoa)
+                </th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Cập nhật thông tin của bạn</a>
+</div>

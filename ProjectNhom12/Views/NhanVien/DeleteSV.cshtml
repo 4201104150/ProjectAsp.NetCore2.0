@@ -1,21 +1,20 @@
-﻿@model ProjectNhom12.Models.NhanVien
+﻿@model ProjectNhom12.Models.Sinhvien
 
 @{
-    ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_LayoutSinhVien.cshtml";
+    ViewData["Title"] = "DeleteSV";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
 }
-
-<h1>Details</h1>
-
+<h1>Xóa sinh viên</h1>
+<h3>Bạn có chắc là xóa sinh viên này???</h3>
 <div>
-    <h4>NhanVien</h4>
+    <h4>Sinh viên</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaNv)
+            @Html.DisplayNameFor(model => model.MaSv)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaNv)
+            @Html.DisplayFor(model => model.MaSv)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Pass)
@@ -24,22 +23,22 @@
             @Html.DisplayFor(model => model.Pass)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TenNv)
+            @Html.DisplayNameFor(model => model.TenSv)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TenNv)
+            @Html.DisplayFor(model => model.TenSv)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ngayvaolam)
+            @Html.DisplayNameFor(model => model.Nam)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ngayvaolam)
+            @Html.DisplayFor(model => model.Nam)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HinhNv)
+            @Html.DisplayNameFor(model => model.HinhSv)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HinhNv)
+            @Html.DisplayFor(model => model.HinhSv)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Gioitinh)
@@ -64,10 +63,12 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.MaKhoaNavigation.MaKhoa)
-        </dd>
+        </dd class>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Cập nhật thông tin</a> 
-    <a asp-action="dssv" asp-controller="NhanViens">dssv</a>
+    
+    <form asp-action="DeleteSV">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="QLSV">Back to List</a>
+    </form>
 </div>

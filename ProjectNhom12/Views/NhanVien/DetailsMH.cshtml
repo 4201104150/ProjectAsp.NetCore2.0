@@ -1,0 +1,37 @@
+﻿@model ProjectNhom12.Models.Monhoc
+
+@{
+    ViewData["Title"] = "DetailsMH";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
+
+<h1>Chi tiết môn học</h1>
+
+<div>
+    <h4>Monhoc</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TenMh)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TenMh)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tinchi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tinchi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MaKhoaNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MaKhoaNavigation.MaKhoa)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="EditMH" asp-route-id="@Model.MaMh">Chỉnh sửa</a> |
+    <a asp-action="dsMon">Trở về</a>
+</div>

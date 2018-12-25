@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "Luong";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
+
+<h1>Luong</h1>
+<table style="width: 100%">
+    <tbody>
+        <tr>
+            <td>
+                <div style="float: left; padding: 0px 10px 0px 0px;">
+                    <img class="icon icons8-Urgent-Message" width="30" height="30">
+                </div>
+                <div style="float:left; padding-top: 5px">
+                    Bạn có  &nbsp;<span style="color: red; font-size: 14px; font-weight: bold;">
+                        <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_lblTinNhanSV">0</span>
+                    </span>&nbsp;
+                    tin nhắn chưa đọc
+                </div>
+                <div style="float:left; padding-top: 5px">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="ContentPlaceHolder1_ctl00_ctl00_ctl00_btnXemTinNhan" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$ctl00$ctl00$ctl00$btnXemTinNhan','')">Xem tin nhắn</a>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Thông tin lương chi tiết:
+                <table style="width: 100%; border-collapse: collapse; border: 1px solid #dfdfdf; text-align: center">
+                    <tbody>
+                        <tr class="cus-tr">
+                            <th class="cus-th">Năm học</th>
+                            <th class="cus-th">Học kỳ</th>
+                            <th class="cus-th">Số tiền nhận được</th>
+                        </tr>
+
+                        <tr>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label1_0">2020-2021</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label2_0">HK01</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label3_0">1.000.000.000</span>
+                            </td>
+                            <td style="border: 1px solid #dfdfdf;">
+                                <span id="ContentPlaceHolder1_ctl00_ctl00_ctl00_rptThongTinNoPhi_Label4_0"></span>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>

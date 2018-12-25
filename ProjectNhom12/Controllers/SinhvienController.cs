@@ -51,7 +51,7 @@ namespace ProjectNhom12.Controllers
         // GET: Sinhvien/Create
         public IActionResult Create()
         {
-            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa");
+            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "TenKhoa");
             return View();
         }
 
@@ -68,7 +68,7 @@ namespace ProjectNhom12.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "MaKhoa", sinhvien.MaKhoa);
+            ViewData["MaKhoa"] = new SelectList(_context.Khoa, "MaKhoa", "TenKhoa", sinhvien.MaKhoa);
             return RedirectToAction("UploadFile");
         }
 

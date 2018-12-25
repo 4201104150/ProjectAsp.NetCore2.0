@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ProjectNhom12.Models.Sinhvien>
+
+@{
+    ViewData["Title"] = "QLSV";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
+
+<h1>QLSV</h1>
+
+<p>
+    <a asp-action="CreateSV" asp-controller="NhanVien">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaSv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenSv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HinhSv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gioitinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cmnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diachi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaKhoaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaSv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HinhSv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gioitinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cmnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diachi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaKhoaNavigation.MaKhoa)
+            </td>
+            <td>
+                <a asp-action="EditSV" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="DeleteSV" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
