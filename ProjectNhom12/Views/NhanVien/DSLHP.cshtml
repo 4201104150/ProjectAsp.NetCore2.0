@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ProjectNhom12.Models.Hocphan>
+
+@{
+    ViewData["Title"] = "DSLHP";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
+
+<h1>DSLHP</h1>
+
+<p>
+    <a asp-action="CreateHP">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Hocky)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Giangvien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaMhNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hocky)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Giangvien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaMhNavigation.MaMh)
+            </td>
+            <td>
+                <a asp-action="EditHP" asp-route-id="@item.MaHp">Edit</a> |
+                <a asp-action="DetailsHP" asp-route-id="@item.MaHp">Details</a> |
+                <a asp-action="DeleteHP" asp-route-id="@item.MaHp">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

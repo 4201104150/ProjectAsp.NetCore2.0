@@ -1,0 +1,50 @@
+﻿@model ProjectNhom12.Models.Hocphan
+
+@{
+    ViewData["Title"] = "CreateHP";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
+
+<h1>CreateHP</h1>
+
+<h4>Hocphan</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateHP">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MaHp" class="control-label"></label>
+                <input asp-for="MaHp" class="form-control" />
+                <span asp-validation-for="MaHp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaMh" class="control-label"></label>
+                <select asp-for="MaMh" class ="form-control" asp-items="ViewBag.MaMh"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hocky" class="control-label"></label>
+                <input asp-for="Hocky" class="form-control" />
+                <span asp-validation-for="Hocky" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nam" class="control-label"></label>
+                <input asp-for="Nam" class="form-control" />
+                <span asp-validation-for="Nam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Giangvien" class="control-label"></label>
+                <input asp-for="Giangvien" class="form-control" />
+                <span asp-validation-for="Giangvien" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="DSLHP">Back to List</a>
+</div>
+

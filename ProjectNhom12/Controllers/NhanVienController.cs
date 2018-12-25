@@ -486,13 +486,13 @@ namespace ProjectNhom12.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaSvc,MaHp,Diem")] Ketqua ketqua)
+        public async Task<IActionResult> CreateKQ([Bind("MaSvc,MaHp,Diem")] Ketqua ketqua)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(ketqua);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(QLKQ));
             }
             ViewData["MaHp"] = new SelectList(_context.Hocphan, "MaHp", "MaHp", ketqua.MaHp);
             ViewData["MaSvc"] = new SelectList(_context.Sinhvien, "MaSv", "MaSv", ketqua.MaSvc);
@@ -500,7 +500,7 @@ namespace ProjectNhom12.Controllers
         }
 
         // GET: Ketqua/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> EditKQ(string id)
         {
             if (id == null)
             {
@@ -522,7 +522,7 @@ namespace ProjectNhom12.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("MaSvc,MaHp,Diem")] Ketqua ketqua)
+        public async Task<IActionResult> EditKQ(string id, [Bind("MaSvc,MaHp,Diem")] Ketqua ketqua)
         {
             if (id != ketqua.MaSvc)
             {
@@ -547,7 +547,7 @@ namespace ProjectNhom12.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(QLKQ));
             }
             ViewData["MaHp"] = new SelectList(_context.Hocphan, "MaHp", "MaHp", ketqua.MaHp);
             ViewData["MaSvc"] = new SelectList(_context.Sinhvien, "MaSv", "MaSv", ketqua.MaSvc);
@@ -555,7 +555,7 @@ namespace ProjectNhom12.Controllers
         }
 
         // GET: Ketqua/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> DeleteKQ(string id)
         {
             if (id == null)
             {
@@ -575,19 +575,158 @@ namespace ProjectNhom12.Controllers
         }
 
         // POST: Ketqua/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteKQ")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmedKQ(string id)
         {
             var ketqua = await _context.Ketqua.FindAsync(id);
             _context.Ketqua.Remove(ketqua);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(QLKQ));
         }
 
         private bool KetquaExists(string id)
         {
             return _context.Ketqua.Any(e => e.MaSvc == id);
+        }
+
+        ///========================
+        ///Lớp học phần
+        public async Task<IActionResult> DSLHP()
+        {
+            var qLSinhvien_NETContext = _context.Hocphan.Include(h => h.MaMhNavigation);
+            return View(await qLSinhvien_NETContext.ToListAsync());
+        }
+
+        // GET: Hocphan/Details/5
+        public async Task<IActionResult> DetailsHP(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var hocphan = await _context.Hocphan
+                .Include(h => h.MaMhNavigation)
+                .FirstOrDefaultAsync(m => m.MaHp == id);
+            if (hocphan == null)
+            {
+                return NotFound();
+            }
+
+            return View(hocphan);
+        }
+
+        // GET: Hocphan/Create
+        public IActionResult CreateHP()
+        {
+            ViewData["MaMh"] = new SelectList(_context.Monhoc, "MaMh", "MaMh");
+            return View();
+        }
+
+        // POST: Hocphan/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateHP([Bind("MaHp,MaMh,Hocky,Nam,Giangvien")] Hocphan hocphan)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(hocphan);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(DSLHP));
+            }
+            ViewData["MaMh"] = new SelectList(_context.Monhoc, "MaMh", "TenMh", hocphan.MaMh);
+            return View(hocphan);
+        }
+
+        // GET: Hocphan/Edit/5
+        public async Task<IActionResult> EditHP(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var hocphan = await _context.Hocphan.FindAsync(id);
+            if (hocphan == null)
+            {
+                return NotFound();
+            }
+            ViewData["MaMh"] = new SelectList(_context.Monhoc, "MaMh", "TenMh", hocphan.MaMh);
+            return View(hocphan);
+        }
+
+        // POST: Hocphan/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditHP(string id, [Bind("MaHp,MaMh,Hocky,Nam,Giangvien")] Hocphan hocphan)
+        {
+            if (id != hocphan.MaHp)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(hocphan);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!HocphanExists(hocphan.MaHp))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(DSLHP));
+            }
+            ViewData["MaMh"] = new SelectList(_context.Monhoc, "MaMh", "TenMh", hocphan.MaMh);
+            return View(hocphan);
+        }
+
+        // GET: Hocphan/Delete/5
+        public async Task<IActionResult> DeleteHP(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var hocphan = await _context.Hocphan
+                .Include(h => h.MaMhNavigation)
+                .FirstOrDefaultAsync(m => m.MaHp == id);
+            if (hocphan == null)
+            {
+                return NotFound();
+            }
+
+            return View(hocphan);
+        }
+
+        // POST: Hocphan/Delete/5
+        [HttpPost, ActionName("DeleteHP")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmedHP(string id)
+        {
+            var hocphan = await _context.Hocphan.FindAsync(id);
+            _context.Hocphan.Remove(hocphan);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool HocphanExists(string id)
+        {
+            return _context.Hocphan.Any(e => e.MaHp == id);
         }
     }
 }

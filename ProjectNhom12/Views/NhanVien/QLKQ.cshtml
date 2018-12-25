@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ProjectNhom12.Models.Ketqua>
+
+@{
+    ViewData["Title"] = "QLKQ";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
+
+<h1>QLKQ</h1>
+
+<p>
+    <a asp-action="CreateKQ">Tạo mới kết quả học tập</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Diem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaHpNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaSvcNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaHpNavigation.MaHp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaSvcNavigation.MaSv)
+            </td>
+            <td>
+                @Html.ActionLink("EditKQ", "EditKQ", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("DetailsKQ", "DetailsKQ", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("DeleteKQ", "DeleteKQ", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
